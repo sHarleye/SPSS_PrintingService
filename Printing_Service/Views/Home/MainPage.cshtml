@@ -1,0 +1,159 @@
+﻿@{
+    ViewData["Title"] = "MainPage";
+    Layout = "~/Views/Shared/_MainPage.cshtml";
+}
+
+<style>
+    .welcome-section {
+        background: url(https://cdn.pixabay.com/photo/2023/03/21/20/39/facade-7868160_1280.jpg) no-repeat center center/cover;  
+        color: white;
+        padding: 30px;
+        border-radius: 20px;
+        text-align: center;
+        justify-content: center;
+        
+    }
+
+    
+
+
+
+</style>
+
+<body style="background-color: whitesmoke;">
+    <div class="container ms-5 mt-3">  
+       <!-- Welcome Section -->  
+       <div class="row">  
+           <div class="col-md-4 offset-md-1">  
+               <div class="card welcome-section mb-4 align-items-center justify-content-center d-flex flex-column" style="width: 120%; height: 300px;">  
+                   <style>  
+                       .welcome-section h1 {  
+                           font-family: 'Sitka Display';  
+                           font-size: 3rem;  
+                           text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);  
+                       }  
+                       .welcome-section h2 {  
+                           font-family: 'Sitka Display';  
+                           font-size: 2.5rem;  
+                           transition: transform 0.3s, color 0.3s;  
+                           text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);  
+                       }  
+                       .welcome-section h2 {  
+                           transform: scale(1.1);  
+                           color: #ffeb3b;  
+                       }  
+                       .welcome-section p {  
+                           font-size: 1.2rem;  
+                           text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);  
+                       }  
+                   </style>  
+                   <h1 class="mt-5">Welcome back</h1>  
+                   <h2>Anh Minh</h2>  
+                   <p>Let's print some document ! <a class="btn btn-primary">Learn more</a> </p>
+               </div>  
+           </div>
+
+            <div class="col-md-6 offset-md-1">  
+               <div class="row">  
+                   <!-- Transaction Section -->  
+                   <div class="col-md-6">  
+                       <div class="card bg-warning bg-opacity-25 shadow-sm">  
+                           <div class="card-body">  
+                               <h5 class="card-title" style="font-family: 'Arial', sans-serif;">Giao dịch của tôi</h5>  
+                               <p><strong>Số trang đã mua:</strong> 30</p>  
+                               <p><strong>Order đã giao dịch:</strong> 8</p>  
+                               <p><strong>Tổng tiền giao dịch:</strong> 100.000 vnd 💵</p>  
+                           </div>  
+                       </div>  
+                   </div>  
+                   <!-- Overview Section -->  
+                   <div class="col-md-6">  
+                       <div class="card bg-success bg-opacity-25 shadow-sm">  
+                           <div class="card-body text-center">  
+                               <h5 class="card-title" style="font-family: 'Arial', sans-serif;">Tổng quan</h5>
+                                <p>📜 Số trang hiện tại: <strong>10</strong> pages 📜</p>
+                                <p>Có <strong>2</strong> orders đang tiến hành</p>  
+                                <p class="fw-bold">Mua thêm trang <a asp-controller="Home" asp-action="BuyPaper" class="btn text-white" style="background-color: coral; ">Here</a></p>
+                            </div>  
+                       </div>  
+                   </div>  
+               </div>  
+            </div>  
+            <style>  
+               .card:hover {  
+                   transform: scale(1.05);  
+                   transition: transform 0.3s ease-in-out;  
+               }  
+            </style>
+        </div>
+
+        <!-- Recent Requests Section -->
+        <div class="mt-4 justify-content-center align-items-center mb-4">
+            <div class="container mt-4 ms-5">
+                <div class="row justify-content-center align-items-center">
+                    <div class="col-12">
+                        <h3 class="fw-bold text-center" style="font-family: 'Sitka Display'">Recent Print Order</h3>
+                    </div>
+                    <div class="col-12 ">
+                        <div class="table-responsive" style="max-width: 100%;">
+                            <table class="table table-bordered table-hover table-striped">
+                                <thead class="table" style="background-color: #121C57; color: whitesmoke;">
+                                    <tr class="text-center">
+                                        <th>Date</th>
+                                        <th>Printer</th>
+                                        <th>Paper</th>
+                                        <th>Document name</th>
+                                        <th>Deliver time</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Oct 12, 2024 07:35:06 AM</td>
+                                        <td>Room 505A4 D10 campus</td>
+                                        <td>20</td>
+                                        <td>Discrete Mathematics and Its Applications</td>
+                                        <td>Oct 12, 2024 08:00:00 AM</td>
+                                        <td><span class="badge bg-danger">Cancel</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Oct 12, 2024 07:35:06 AM</td>
+                                        <td>Room 505A4 D10 campus</td>
+                                        <td>20</td>
+                                        <td>Data Structures and Algorithms</td>
+                                        <td>Oct 12, 2024 08:00:00 AM</td>
+                                        <td><span class="badge bg-warning">Waiting</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Oct 12, 2024 07:35:06 AM</td>
+                                        <td>Room 505A4 D10 campus</td>
+                                        <td>20</td>
+                                        <td>Computer Networking: A Top-Down Approach</td>
+                                        <td>Oct 12, 2024 08:00:00 AM</td>
+                                        <td><span class="badge bg-warning">Waiting</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Oct 12, 2024 07:35:06 AM</td>
+                                        <td>Room 505A4 D10 campus</td>
+                                        <td>20</td>
+                                        <td>Basic Concepts and Models for Interpreter</td>
+                                        <td>Oct 12, 2024 08:00:00 AM</td>
+                                        <td><span class="badge bg-success">Done</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Oct 12, 2024 07:35:06 AM</td>
+                                        <td>Room 505A4 D10 campus</td>
+                                        <td>20</td>
+                                        <td>Principle of Programming Language</td>
+                                        <td>Oct 12, 2024 08:00:00 AM</td>
+                                        <td><span class="badge bg-success">Done</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+</body>

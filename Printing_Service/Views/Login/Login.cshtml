@@ -1,0 +1,188 @@
+﻿@{  
+   Layout = "~/Views/Shared/_Layout.cshtml";  
+}  
+ 
+<style>  
+  
+ 
+   .box {  
+       position: relative;
+       background-color: white;  
+       padding: 80px;  
+       border-radius: 8px;  
+       width: auto;  
+       text-align: center;  
+   }  
+ 
+   .box button {  
+       width: 100%;  
+       padding: 10px;  
+       margin: 10px 0;  
+       font-size: 16px;  
+       color: white;  
+       background-color: #121C57;   
+       border: none;  
+       border-radius: 5px;  
+       cursor: pointer;  
+       transition: background-color 0.3s;  
+   }  
+ 
+   .box button:hover {  
+       background-color: orange;  
+       color: black;  
+       font-weight: bold;
+   }
+
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
+
+    .card {
+        z-index: 1001;
+    }
+
+    .b1:hover{
+        background-color: red !important;
+        font-weight: bold;
+        color: black !important;
+        
+    }
+
+    #feature .fe-box {
+        width: 180px;
+        text-align: center;
+        padding: 25px 15px;
+        box-shadow: 20px 20px 34px rgba(0, 0, 0, 0.03);
+        border: 1px solid #cce7d0;
+        border-radius: 4px;
+        margin: 15px;
+    }
+
+        #feature .fe-box:hover {
+            box-shadow: 10px 10px 54px rgba(70, 62, 221, 0.1);
+        }
+
+        #feature .fe-box img {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        #feature .fe-box h6 {
+            padding: 9px 8px 6px 8px;
+            line-height: 1;
+            border-radius: 4px;
+            color: #088178;
+            background-color: #fddde4;
+            display: inline-block;
+        }
+
+    #feature {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+
+        #feature .fe-box:nth-child(2) h6 {
+            background-color: #cdebbc;
+        }
+
+        #feature .fe-box:nth-child(3) h6 {
+            background-color: #d1e8f2;
+        }
+
+        #feature .fe-box:nth-child(4) h6 {
+            background-color: #cdd4f8;
+        }
+
+        #feature .fe-box:nth-child(5) h6 {
+            background-color: #f6bdf6;
+        }
+
+        #feature .fe-box:nth-child(6) h6 {
+            background-color: #fff2e5;
+        }
+
+
+        #feature .fe-box p {
+            font-family: 'Arial', sans-serif;
+            font-size: 14px;
+            color: #
+
+</style>  
+ 
+<div class="hello ">
+    <section class="banner-slider">
+        <ul id="adaptive">
+            <li><img src="~/Image/slbktv.jpg" width="1500" height="690"></li>
+            <li><img src="~/Image/printer1.jpg" alt="" width="1500" height="690"></li>
+            <li><img src="~/Image/printer2.jpg" width="1500" height="690"></li>
+        </ul>
+    </section>
+
+
+</div>
+
+ 
+<div class="overlay">  
+   <div class="box ">
+        <img src="~/Image/logoBK.jpg" alt="logo" style="width: 150px ; height: 100px;">
+
+       <h2>Select an Option</h2>  
+       <form asp-controller="Home" asp-action="Privacy" method="post">  
+           <button type="submit">Student</button>  
+       </form>  
+       <form asp-controller="Home" asp-action="LoginSPSO" method="post">  
+           <button type="submit">SPSO</button>  
+       </form>  
+        <div class="text-center btn mt-4 b1" style="background-color: #121C57; color: white">
+            <a asp-action="Index" asp-controller="Home" class="text-decoration-none text-white">Exit</a>
+        </div>
+
+   </div>  
+</div>
+
+<section id="feature">
+    <div class="fe-box">
+        <img src="https://cdn.pixabay.com/photo/2021/11/14/18/36/telework-6795505_960_720.jpg" alt="">
+        <h6>Online order</h6>
+        <p>Making order easily on the website</p>
+    </div>
+
+    <div class="fe-box">
+        <img src="https://cdn.pixabay.com/photo/2017/08/30/07/52/money-2696219_1280.jpg" alt="">
+        <h6>Save Money</h6>
+        <p>Save money with our printing service</p>
+    </div>
+
+    <div class="fe-box">
+        <img src="https://images.pexels.com/photos/11952303/pexels-photo-11952303.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="">
+        <h6>Easy to configure</h6>
+        <p>Edit and format the printing by your own</p>
+    </div>
+
+    <div class="fe-box">
+        <img src="https://images.pexels.com/photos/8939564/pexels-photo-8939564.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="">
+        <h6>Shipping</h6>
+        <p>Fast shipping to your location</p>
+    </div>
+
+    <div class="fe-box">
+        <img src="https://images.pexels.com/photos/8867435/pexels-photo-8867435.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="">
+        <h6>Support</h6>
+        <p>24/7 support for your order</p>
+    </div>
+</section>
+
+
+
+

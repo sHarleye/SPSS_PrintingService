@@ -1,0 +1,78 @@
+﻿﻿@{
+    ViewData["Title"] = "ConfigUpload";
+    Layout = "~/Views/Shared/_MainPage.cshtml";
+}
+
+<div class="d-flex justify-content-center align-items-center imagebehind">
+    <div class="account-box">
+        <div class ="row">
+            <div id ="partialZone" class="col-md-6">
+                <partial name ="_PDFView"/>
+            </div>            
+            <div class="col-md-6"> 
+                <form>
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            <label class="mb-3 fw-bold" for="pages-to-print">Chọn trang cần in</label>
+                            <input class="mb-3" type="number" id="pages-to-print" name="pages-to-print">
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <label class="mb-3 fw-bold" for="page-size">Khổ giấy</label>
+                            <select name="page-size" id="page-size">
+                                <option value="a4"> A4</option>
+                                <option value="a3">A3</option>
+                            </select>
+                        </div>
+                
+                        <div class="col-md-12 form-group">
+                            <label class="mb-3 fw-bold" for="Orientation">Hướng in</label>         
+                            <select name="Orientation" id="Orientation">
+                                <option value="top">TOP</option>
+                                <option value="bottom">BOTTOM</option>
+                            </select>
+                        </div>
+                
+                        <div class="col-md-12 form-group">
+                            <label class="mb-3 fw-bold" for="page-per-side">Số trang/1 mặt in</label>
+                            <input class="mb-3" type="number" id="page-per-side" name="page-per-side">
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <label class="mb-3 fw-bold" for="side-per-page">Số mặt in/1 tờ</label>
+                            <select name="Orientation" id="side-per-page">
+                                <option value="1side">1</option>
+                                <option value="2side">2</option>
+                            </select>
+                        </div>
+                
+                        <div class="col-md-12 form-group">
+                            <label class="mb-3 fw-bold" for="ratio">Tỉ lệ</label>
+                            <input class="mb-5" type="number" id="ratio" name="ratio">
+                        </div>
+
+                        <div class="buttons mt-5 d-flex justify-content-center align-items-center me-3">
+                            <a asp-controller="" asp-action="" class="btn btn-lg btn-secondary me-5">Trở về</a>
+                            <a asp-controller="Home" asp-action="ConfirmConfig" class="btn btn-lg btn-success">Tiếp theo</a>
+                        </div>
+                    </div>  
+                </form>
+            </div>           
+        </div>
+    </div>
+</div>
+
+<style>
+    .account-box {
+        height: 600px;
+        width: 1000px;
+        background-color: rgba(255, 255, 255, 0.8); /* Màu nền mờ */
+        padding: 100px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Bóng mờ */
+        border: 1px solid black;
+        border-radius: 80px;
+    }
+
+    .imagebehind {
+        background-image: url('/image/slbktv.jpg');
+    }
+</style>
+

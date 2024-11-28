@@ -1,0 +1,237 @@
+﻿
+@{
+    ViewData["Title"] = "MainPage";
+    Layout = "~/Views/Shared/_MainPageSPSO.cshtml";
+}
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<style>
+    .welcome-section {
+        background: url(https://cdn.pixabay.com/photo/2023/03/21/20/39/facade-7868160_1280.jpg) no-repeat center center/cover;
+        color: white;
+        padding: 30px;
+        border-radius: 20px;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .form-switch .form-check-input:checked {
+        background-color: blue;
+    }
+
+    .table th, .table td {
+        text-align: left;
+        vertical-align: middle; 
+    }
+
+    .table th {
+        text-align: center;
+    }
+
+   
+</style>
+
+<body style="background-color:whitesmoke;">
+    <div class="container ms-5 mt-3">
+        <!-- Welcome Section -->
+        <div class="row">
+            <div class="col-md-4 offset-md-2">
+                <div class="card welcome-section mb-4 align-items-center justify-content-center d-flex flex-column" style="width: 120%; height: 300px;">
+                    <style>
+                        .welcome-section h1 {
+                            font-family: 'Sitka Display';
+                            font-size: 3rem;
+                            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+                        }
+
+                        .welcome-section h2 {
+                            font-family: 'Sitka Display';
+                            font-size: 2.5rem;
+                            transition: transform 0.3s, color 0.3s;
+                            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+                        }
+
+                        .welcome-section h2 {
+                            transform: scale(1.1);
+                            color: #ffeb3b;
+                        }
+
+                        .welcome-section p {
+                            font-size: 1.2rem;
+                            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+                        }
+                    </style>
+                    <h1 class="mt-5">Welcome back</h1>
+                    <h2>Admin</h2>
+                    <a class="btn btn-primary" asp-controller="Home" asp-action="EditSystemSPSO">Cài đặt hệ thống</a>
+                </div>
+            </div>
+
+            <div class="col-md-5 offset-md-1">
+                <div class="row">
+                    <!-- Transaction Section -->
+                    <div class="col-md-10">
+                        <div class="card bg-warning bg-opacity-25 shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title fw-bold" style="font-family: 'Arial', sans-serif;">Thông tin hiện tại</h5>
+                                <p>Số máy in hiện đang hoạt động:  <strong> 3</strong></p>
+                                <p>Số máy tin tạm ngưng hoạt động:  <strong> 2</strong> </p>
+                                <p class="fw-bold">Xem lịch sử in <a class="btn text-white" style="background-color: coral; ">Here</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <style>
+                .card:hover {
+                    transform: scale(1.05);
+                    transition: transform 0.3s ease-in-out;
+                }
+            </style>
+        </div>
+
+        <!-- Recent Requests Section -->
+        <div class="mt-4 justify-content-center align-items-center mb-4">
+            <div class="container mt-4 ms-5">
+                <div class="row justify-content-center align-items-center">
+                    <div class="col-12">
+                        <h3 class="fw-bold text-center" style="font-family: 'Sitka Display'">Thông số trạng thái máy in</h3>
+                    </div>
+                    <div class="col-12 ">
+                        <div class="table-responsive" style="max-width: 100%;">
+                            <table class="table table-bordered table-hover table-striped" >
+                                <thead class="table" style="background-color: #121C57; color: whitesmoke; ">
+                                    <tr class="text-center">
+                                        <th>Ngày thêm</th>
+                                        <th>Printer Info</th>
+                                        <th>Printer ID</th>                           
+                                        <th>Nơi đặt</th>
+                                        <th>Tổng số lần đã in</th>
+                                        <th>Số lần in hôm nay</th>
+                                        <th>Status</th>
+                                        <th>Cấp quyền</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Oct 12, 2024 07:35:06 AM</td>
+                                        <td>Brother HL-L2321D</td>
+                                        <td>P01</td>
+                                        <td>B4</td>
+                                        <td>200</td>
+                                        <td>10</td>
+                                        <td><span class="badge bg-success">Hoạt động</span></td>
+                                        <td>
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" id="feature1" checked onclick="return toggleStatus(this, 'feature1')" data-status="active">
+                                                <label class="form-check-label fw-bold" for="feature1">Enable/Disable</label>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Oct 12, 2024 07:35:06 AM</td>
+                                        <td>HP 107w Wifi (4ZB78A)</td>
+                                        <td>P01</td>
+                                        <td>B8</td>
+                                        <td>200</td>
+                                        <td>10</td>
+                                        <td><span class="badge bg-success">Hoạt động</span></td>
+                                        <td>
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" id="feature2" checked onclick="return toggleStatus(this, 'feature2')" data-status="active">
+                                                <label class="form-check-label fw-bold" for="feature2">Enable/Disable</label>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Oct 12, 2024 07:35:06 AM</td>
+                                        <td>HP LaserJet MFP 135w Wifi (4ZB83A)</td>
+                                        <td>P01</td>
+                                        <td>B2</td>
+                                        <td>200</td>
+                                        <td>10</td>
+                                        <td><span class="badge bg-danger">Tạm ngưng hoạt động</span></td>
+                                        <td>
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" id="feature3" onclick="return toggleStatus(this, 'feature3')" data-status="inactive">
+                                                <label class="form-check-label fw-bold" for="feature3">Enable/Disable</label>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Oct 12, 2024 07:35:06 AM</td>
+                                        <td>Canon PIXMA GM2070 Wifi</td>
+                                        <td>P01</td>
+                                        <td>B9</td>
+                                        <td>200</td>
+                                        <td>10</td>
+                                        <td><span class="badge bg-success">Hoạt động</span></td>
+                                        <td>
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" id="feature4" checked onclick="return toggleStatus(this, 'feature4')" data-status="active">
+                                                <label class="form-check-label fw-bold" for="feature4">Enable/Disable</label>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Oct 12, 2024 07:35:06 AM</td>
+                                        <td>Epson EcoTank L3250 Wifi (C11CJ67503)</td>
+                                        <td>P01</td>
+                                        <td>C6</td>
+                                        <td>200</td>
+                                        <td>10</td>
+                                        <td><span class="badge bg-danger">Tạm ngưng hoạt động</span></td>
+                                        <td>
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" id="feature5" onclick="return toggleStatus(this, 'feature5')" data-status="inactive">
+                                                <label class="form-check-label fw-bold" for="feature5">Enable/Disable</label>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function toggleStatus(checkbox, id) {
+            const status = checkbox.checked ? 'active' : 'inactive';
+            const badge = document.querySelector(`#${id}`).closest('tr').querySelector('.badge');
+            const label = checkbox.closest('.form-check').querySelector('label');
+
+            // Update status visually
+            if (status === 'active') {
+                badge.classList.remove('bg-danger');
+                badge.classList.add('bg-success');
+                badge.textContent = 'Hoạt động';
+            } else {
+                badge.classList.remove('bg-success');
+                badge.classList.add('bg-danger');
+                badge.textContent = 'Tạm ngưng hoạt động';
+            }
+
+            // Handle success or error messages based on the toggle
+            if (status === 'active') {
+                Swal.fire({
+                    title: 'Thành công!',
+                    text: 'Cấp quyền thành công',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                });
+            } else {
+                Swal.fire({
+                    title: 'Thành công!',
+                    text: 'Hủy cấp quyền thành công',
+                    icon: 'warning',
+                    confirmButtonText: 'OK'
+                });
+            }
+        }
+    </script>
+</body>

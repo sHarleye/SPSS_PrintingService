@@ -1,0 +1,349 @@
+@{
+    ViewData["Title"] = "Upload";
+    Layout = "~/Views/Shared/_Upload.cshtml";
+}
+
+<div class="hello">
+    <img src="~/Image/slbktv.jpg" alt="">
+</div>
+
+<div class="overlay d-flex justify-content-center align-items-center vh-100">
+    <div class="upload-box p-4 rounded shadow" style="width: 100%; max-width: 1000px;">
+        <div class="upload-main">
+            <div class="adding-files">
+                <p style="font-size: 1.2em;">Tải tài liệu</p>
+                <p style="color:gray;text-decoration: underline;text-decoration-color: gray;text-underline-offset: 20px;">Chọn và tải lên tài liệu bạn muốn in</p>
+                <br />
+                <div class="file-upload" id="drop-zone">
+                    <i class="fa fa-cloud-upload" aria-hidden="true"></i>
+                    <p>Chọn thư mục hoặc kéo thả vào đây</p>
+                    <p style="color: gray;">Định dạng: .docx, .pdf, lên tới 50MB</p>
+                    <input type="File" id="file" multiple>
+                </div>
+            </div>
+            <div class="preview" style="display: none;">
+                <!-- File preview dynamically populated via JavaScript -->
+            </div>
+        </div>
+        <div class="upload-progress">
+            <ul class="file-list" style="list-style-type:none;">
+            <!--    <li class="file-item">
+                    <div class="file-extension">
+                        <img src="https://www.flaticon.com/free-icon/pdf_337946" width="30">
+                    </div>
+                    <div class="file-details">
+                        <b>my_cv.pdf</b>
+                        <br />
+                        <span style="color:gray;">60 kB of 120 kB</span>
+                        <span>•</span>
+                        <i class="fa fa-check-circle-o"></i>
+                        <span>Hoàn tất</span>
+                    </div>
+                    <button class="delete"><i class="fa-regular fa-circle-xmark"></i></button>
+                </li>
+                <li class="file-item">
+                    <div class="file-extension">
+                        <img src="https://www.flaticon.com/free-icon/pdf_337946" width="30">
+                    </div>
+                    <div class="file-details">
+                        <b>Video.mp4</b>
+                        <br />
+                        <span style="color:gray;">0 MB of 494 MB</span>
+                        <span>•</span>
+                        <i class="fa fa-check-circle-o"></i>
+                        <span>Lỗi định dạng</span>
+                    </div>
+                    <button class="delete"><i class="fa-regular fa-circle-xmark"></i></button>
+                </li>
+                <li class="file-item">
+                    <div class="file-extension">
+                        <img src="https://www.flaticon.com/free-icon/pdf_337946" width="30">
+                    </div>
+                    <div class="file-details">
+                        <b>hello.pdf</b>
+                        <br/>
+                        <span style="color:gray;">0 MB of 51 MB</span>
+                        <span>•</span>
+                        <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                        <span>Lỗi kích thước</span>
+                    </div>
+                    <button class="delete"><i class="fa-regular fa-circle-xmark"></i></button>
+                </li>
+                -->
+            </ul>
+            <div class="config">
+                <button class="next">Trở về</button>
+                <button class="next" onclick="location.href='@Url.Action("UploadConfig", "Home")'">Tiếp theo</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<style>
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.2);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
+
+    .upload-box {
+        display: flex;
+        max-width: 1000px;
+        height: 400px;
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Bóng mờ */
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    .upload-main {
+        margin: auto;
+        width: 40%;
+        text-align: center;
+    }
+
+    #drop-zone {
+        transition: background-color 0.3s ease;
+    }
+
+    #drop-zone.dragover {
+        background-color: rgba(135, 206, 250, 0.3); /* Highlight on drag */
+        border-color: deepskyblue;
+    }
+
+    .preview {
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.5);
+        width: 100%;
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 15px;
+        border-radius: 8px;
+    }
+
+    .preview-card {
+        display: flex;
+        align-items: center;
+        background-color: #e0f7fc; /* Sky blue background */
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        width: 100%;
+    }
+
+    .preview-icon {
+        margin-right: 15px;
+    }
+
+    .preview-details {
+        font-size: 1em;
+    }
+
+        .preview-details p:first-child {
+            font-weight: bold;
+        }
+
+        .preview-details p:last-child {
+            color: gray;
+        }
+
+    .upload-progress {
+        margin: auto;
+        width: 60%;
+        display: none;
+    }
+
+    .file-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0 0 10px 0;
+        width: 85%;
+        background-color: rgba(255, 255, 255, 0.9);
+        padding: 10px;
+        border-radius: 10px;
+        position: relative;
+    }
+
+    .file-extension {
+        margin: auto;
+        width: 10%;
+    }
+
+    .file-details {
+        width: 90%;
+        text-align: left;
+    }
+
+    .file-upload {
+        margin: auto;
+        width: 85%;
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        border: 1px dashed gray;
+    }
+
+    .delete {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        background: none;
+        border: none;
+        font-size: 1.2em;
+        cursor: pointer;
+    }
+
+    .config {
+        margin: auto;
+        display: none;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .next {
+        width: 100px;
+        height: 35px;
+        background-color: deepskyblue;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+
+</style>
+
+<script>
+
+    const uploadProgress = document.querySelector('.upload-progress');
+    const dropZone = document.getElementById('drop-zone');
+    const fileInput = document.getElementById('file');
+    const fileList = document.querySelector('.file-list');
+    const addingFiles = document.querySelector('.adding-files');
+    const previewArea = document.querySelector('.preview');
+    const configSection = document.querySelector('.config');
+
+    function toggleUploadProgress() {
+        if (fileList.childElementCount === 0) {
+            uploadProgress.style.display = 'none';
+        } else {
+            uploadProgress.style.display = 'block';
+        }
+    }
+
+    function bindFileItemEvents(fileItem) {
+        fileItem.addEventListener('click', function () {
+
+            addingFiles.style.display = 'none';
+
+            previewArea.style.display = 'flex';
+            previewArea.innerHTML = `
+                <div class="preview-card">
+                    <div class="preview-icon">
+                        <img src="${this.querySelector('.file-extension img').src}" width="40">
+                    </div>
+                    <div class="preview-details">
+                        <p><b>${this.querySelector('.file-details b').innerText}</b></p>
+                        <p>${this.querySelector('.file-details span').innerText}</p>
+                    </div>
+                </div>
+            `;
+
+            configSection.style.display = 'flex';
+        });
+
+        fileItem.querySelector('.delete').addEventListener('click', function (event) {
+            event.stopPropagation();
+            fileItem.remove();
+            toggleUploadProgress();
+        });
+    }
+
+    function createFileItem(file) {
+        const fileItem = document.createElement('li');
+        fileItem.classList.add('file-item');
+        fileItem.innerHTML = `
+            <div class="file-extension">
+                <img src="https://www.flaticon.com/free-icon/pdf_337946" width="30">
+            </div>
+            <div class="file-details">
+                <b>${file.name}</b>
+                <br />
+                <span style="color:gray;">${(file.size / 1024).toFixed(2)} kB of ${(file.size / 1024).toFixed(2)} kB</span>
+                <span>•</span>
+                <i class="fa fa-check-circle-o"></i>
+                <span>Hoàn tất</span>
+            </div>
+            <button class="delete"><i class="fa-regular fa-circle-xmark"></i></button>
+        `;
+
+        fileList.appendChild(fileItem);
+        bindFileItemEvents(fileItem);
+        toggleUploadProgress();
+    }
+
+    function handleFiles(files) {
+        Array.from(files).forEach(file => {
+            createFileItem(file);
+        });
+        toggleUploadProgress();
+    }
+
+    dropZone.addEventListener('dragover', (event) => {
+        event.preventDefault();
+        dropZone.classList.add('dragover');
+    });
+
+    dropZone.addEventListener('dragleave', () => {
+        dropZone.classList.remove('dragover');
+    });
+
+    dropZone.addEventListener('drop', (event) => {
+        event.preventDefault();
+        dropZone.classList.remove('dragover');
+
+        const files = event.dataTransfer.files;
+        handleFiles(files);
+    });
+
+    fileInput.addEventListener('change', () => {
+        handleFiles(fileInput.files);
+    });
+
+    document.querySelectorAll('.file-item').forEach(fileItem => {
+        bindFileItemEvents(fileItem);
+    });
+
+    document.querySelector('.config .next:first-child').addEventListener('click', function () {
+        addingFiles.style.display = 'block';
+        previewArea.style.display = 'none';
+        configSection.style.display = 'none';
+    });
+
+    document.querySelector('.config .next:first-child').addEventListener('click', function () {
+        document.querySelector('.adding-files').style.display = 'block';
+        document.querySelector('.preview').style.display = 'none';
+        document.querySelector('.config').style.display = 'none';
+    });
+
+    document.querySelectorAll('.delete').forEach(deleteButton => {
+        deleteButton.addEventListener('click', function (event) {
+            event.stopPropagation();
+
+            const fileItem = this.closest('.file-item');
+            fileItem.remove();
+        });
+    });
+</script>

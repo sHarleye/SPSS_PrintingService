@@ -1,0 +1,161 @@
+@{
+    ViewData["Title"] = "UploadConfig";
+    Layout = "~/Views/Shared/_Upload.cshtml";
+}
+
+<div class="hello">
+    <img src="~/Image/slbktv.jpg" alt="">
+</div>
+
+<div class="overlay d-flex justify-content-center align-items-center vh-100">
+    <div class="upload-box p-4 rounded shadow" style="width: 100%; max-width: 1000px;">
+        <div class="print-preview">
+            <div class="preview">
+                <p>PRINT PREVIEW</p>
+            </div>
+        </div>
+        <div class="print-config">
+            <label for="pages">Chọn trang cần in</label>
+            <select name="pages" id="pages">
+                <option value="" disabled selected></option>
+                <option value="all">Tất cả</option>
+                <option value="odd">Trang lẻ</option>
+                <option value="even">Trang chẵn</option>
+                <option value="custom">Tùy chọn</option>
+            </select>
+            <br/>
+            <label for="size">Khổ giấy</label>
+            <select name="size" id="size">
+                <option value="" disabled selected></option>
+                <option value="a3">A3</option>
+                <option value="a4">A4</option>
+                <option value="a5">A5</option>
+            </select>
+            <br/>
+            <label for="direction">Hướng in</label>
+            <select name="direction" id="direction">
+                <option value="" disabled selected></option>
+                <option value="horizontal">Ngang</option>
+                <option value="vertical">Dọc</option>
+            </select>
+            <br/>
+            <label for="pagesperside">Số trang/1 mặt in</label>
+            <select name="pagesperside" id="pagesperside">
+                <option value="" disabled selected></option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="4">4</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+            </select>
+            <br/>
+            <label for="sides">Số mặt in/1 tờ</label>
+            <select name="sides" id="sides">
+                <option value="" disabled selected></option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+            </select>
+            <br/>
+            <label for="ratio">Tỷ lệ</label>
+            <select name="ratio" id="ratio">
+                <option value="" disabled selected></option>
+                <option value="fit">Vừa trang giấy</option>
+                <option value="full">Toàn bộ</option>
+            </select>
+            <div class="config">
+                <button class="next" onclick="location.href='@Url.Action("Upload", "Home")'">Trở về</button>
+                <button class="next" onclick="location.href='@Url.Action("UploadConfirm", "Home")'">Tiếp theo</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<style>
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.2);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
+
+    .upload-box {
+        display: flex;
+        max-width: 1000px;
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Bóng mờ */
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    .print-preview {
+        margin: auto;
+        width: 40%;
+        text-align: center;
+        border-radius: 8px;
+    }
+
+    .preview {
+        width: 350px;
+        height: 300px;
+        background-color: gray;
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+    }
+
+    .print-config {
+        margin: auto;
+        width: 60%;
+    }
+
+    .delete {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        background: none;
+        border: none;
+        font-size: 1.2em;
+        cursor: pointer;
+    }
+
+    .config {
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .next {
+        width: 100px;
+        height: 35px;
+        background-color: deepskyblue;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+
+    label {
+        width: 200px;
+        margin-left: 75px;
+    }
+
+    select {
+        width: 200px;
+        height: 35px;
+        border: none;
+        background-color: skyblue;
+        border-radius: 5px;
+        margin-bottom: 25px;
+    }
+</style>

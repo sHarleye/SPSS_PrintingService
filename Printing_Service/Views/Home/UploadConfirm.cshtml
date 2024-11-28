@@ -1,0 +1,164 @@
+@{
+    ViewData["Title"] = "UploadConfirm";
+    Layout = "~/Views/Shared/_Upload.cshtml";
+}
+
+<div class="hello">
+    <img src="~/Image/slbktv.jpg" alt="">
+</div>
+
+<div class="overlay d-flex justify-content-center align-items-center vh-100">
+    <div class="print-info p-4 rounded shadow" style="width: 100%; max-width: 1000px;">
+        <div class="print-confirm">
+            <h2 style="text-decoration: underline;text-decoration-color:gray;text-underline-offset: 20px;text-align:center;">Thông báo trạng thái</h2>
+            <br />
+            <br />
+            <label>Tài liệu</label>
+            <label class="info">my_cv.pdf</label>
+            <br />
+            <label>Số trang có sẵn</label>
+            <label class="info">5 (A3)</label>
+            <br />
+            <label>Số trang cần để in</label>
+            <label class="info">2 (A3)</label>
+            <br />
+            <label for="printers">Máy in</label>
+            <select name="printers" id="printers">
+                <option value="" disabled selected></option>
+                <option value="1">Máy in 1</option>
+                <option value="2">Máy in 2</option>
+                <option value="3">Máy in 3</option>
+            </select>
+            <div class="config">
+                <button class="next" onclick="location.href='@Url.Action("UploadConfig", "Home")'">Trở về</button>
+                <button class="next" id="start">Tiếp theo</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="overlay2" id="progress">
+    <div class="print-progress">
+        <h2 style="text-decoration: underline;text-decoration-color:gray;text-underline-offset: 20px;text-align:center;">Trạng thái in</h2>
+        <br />
+        <br />
+        <label class="prog" style="text-align:center;">Tài liệu</label>
+        <label class="prog" style="text-align:center;">my_cv.pdf</label>
+        <br />
+        <p style="text-align:center;color:mediumseagreen;font-weight:bold;">• In thành công</p>
+        <br />
+        <div class="config">
+            <button class="next" onclick="location.href='@Url.Action("MainPage", "Home")'">Thoát</button>
+        </div>
+    </div>
+</div>
+
+<style>
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.2);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
+
+    .overlay2 {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.2);
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
+
+    .print-info {
+        display: flex;
+        max-width: 1000px;
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Bóng mờ */
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    .print-confirm {
+        margin: auto;
+        width: 50%;
+    }
+
+    .print-progress {
+        max-width: 500px;
+        background-color: lightskyblue;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    .delete {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        background: none;
+        border: none;
+        font-size: 1.2em;
+        cursor: pointer;
+    }
+
+    .config {
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .next {
+        width: 100px;
+        height: 35px;
+        background-color: deepskyblue;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+
+    label {
+        width: 200px;
+        margin-bottom: 25px;
+    }
+
+    .info {
+        text-align: center;
+    }
+
+    select {
+        width: 200px;
+        height: 35px;
+        border: none;
+        background-color: skyblue;
+        border-radius: 5px;
+        margin-bottom: 25px;
+    }
+</style>
+
+<script>
+    document.getElementById('start').addEventListener('click', function () {
+        // Hide the first overlay
+        document.querySelector('.overlay').style.display = 'none';
+        // Show the second overlay
+        document.getElementById('progress').style.display = 'flex';
+    });
+</script>

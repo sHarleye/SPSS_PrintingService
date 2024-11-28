@@ -1,0 +1,105 @@
+﻿@{
+    ViewData["Title"] = "EditSystemSPSO";
+    Layout = "~/Views/Shared/_MainPageSPSO.cshtml";
+}
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<div class="d-flex justify-content-center align-items-center imagebehind">
+    <div class="account-box">
+        <h1 class="mb-5">Quản lý cài đặt in</h1>
+
+        <div class="content-box">
+            <p>Thông số cài đặt in</p>
+            <hr style="border-top: 3px solid #000;" />
+
+            <form class="form" onsubmit="return showSuccessMessage()">
+                <div class="row ms-5">
+                    <div class="col-md-6 form-group">
+                        <label class="mb-3 fw-bold" for="date-supply">Ngày cung cấp giấy</label>
+                        <br />
+                        <input class="mb-5" type="date" id="date-supply" name="date-supply">
+
+                        <br />
+
+                        <label class="mb-3 fw-bold" for="history-date">Ngày lưu lịch sử</label>
+                        <br />
+                        <input class="mb-5" type="date" id="history-date" name="history-date">
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label class="mb-3 fw-bold" for="printerinfo">Thông tin máy tin</label>
+                        <br />
+                        <input class="mb-5" type="text" id="printerìno" name="printerinfo" placeholder="HP 107a (4ZB77A)">
+
+                        <br />
+
+                        <label class="mb-3 fw-bold" for="printerplace">Nơi đặt máy in</label>
+                        <br />
+                        <input class="mb-5" type="text" id="printerplace" name="printerplace" placeholder="B1">
+                        
+
+
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label class="mb-3 fw-bold" for="pages-per-semester">Số trang giấy được cung cấp mỗi học kỳ</label>
+                        <br />
+                        <input class="mb-5" type="number" id="pages-per-semester" name="pages-per-semester" placeholder="Nhập số trang">
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label class="mb-2 fw-bold">Định dạng file cho phép</label>
+                        <div class="mb-5">
+                            <label class="me-3"><input type="checkbox" name="format" value="pdf"> .pdf</label>
+                            <label class="me-3"><input type="checkbox" name="format" value="docx"> .docx</label>
+                            <label class="me-3"><input type="checkbox" name="format" value="pptx"> .pptx</label>
+                            <label class="me-3"><input type="checkbox" name="format" value="jpg"> .jpg</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="buttons d-flex justify-content-center align-items-center me-3">
+                    <a asp-controller="Home" asp-action="MainPageSPSO" class="btn btn btn-secondary me-5">Trở về</a>
+                    <button type="submit" class="btn btn btn-primary me-5">In Report</button>
+                    <button type="submit" class="btn btn btn-success">Lưu</button>
+                   
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    .account-box {
+        width: 80%;
+        max-width: 1200px;
+        background-color: rgba(255, 255, 255, 0.8); /* Màu nền mờ */
+        padding: 50px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Bóng mờ */
+        border: 1px solid black; 
+        border-radius: 20px; 
+    }
+
+    .content-box {
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    .imagebehind {
+        background-image: url('/image/slbktv.jpg');
+        background-size: cover;
+        background-position: center;
+        height: 90vh;
+        width: 100%;
+    }
+</style>
+
+<script>
+    function showSuccessMessage() {
+        Swal.fire({
+            title: 'Thành công!',
+            text: 'Đã lưu thành công',
+            icon: 'success',
+            confirmButtonText: 'OK'
+        });
+        return false;
+    }
+</script>

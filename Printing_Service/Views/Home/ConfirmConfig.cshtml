@@ -1,0 +1,79 @@
+﻿﻿@{
+    ViewData["Title"] = "ConfirmConfig";
+    Layout = "~/Views/Shared/_MainPage.cshtml";
+}
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<div class="d-flex justify-content-center align-items-center imagebehind">
+    <div class="account-box">
+        <h1 class="text-center">Thông báo trạng thái</h1>
+        <hr style="border-top: 3px solid #000;" />
+
+        
+        <div class="row mb-3 text-center">
+            <div class="col-md-5 fw-bold"> Tài liệu</div>
+            <div class="col-md-7"> @ViewBag.Filename</div>
+        </div>
+
+        <div class="row mb-3 text-center">
+            <div class="col-md-5 fw-bold"> Số trang có sẵn</div>
+            <div class="col-md-7"> 5 (A3)</div>
+        </div>
+
+        <div class="row mb-3 text-center">
+            <div class="col-md-5 fw-bold"> Số trang cần để in</div>
+            <div class="col-md-7"> 2 (A3)</div>
+        </div>
+
+        <form class="form" onsubmit="return showSuccessMessage()">
+            <div class="row mb-3 text-center">
+                <div class="col-md-5 fw-bold"> 
+                    <label class="fw-bold" for="printer">Máy in</label>
+                </div>
+                <div class="col-md-7"> 
+                    <select name="page-size" id="page-size">
+                        <option value="1p">1</option>
+                        <option value="2p">2</option>
+                        <option value="3p">3</option>
+                        <option value="4p">4</option>
+                        <option value="4p">5</option>
+                    <select>
+                </div>
+            </div>
+            <div class="buttons mt-5 d-flex justify-content-center align-items-center me-3">
+                <a asp-controller="Home" asp-action="ConfigUpload" class="btn btn-lg btn-secondary me-5">Trở về</a>
+                <button type="submit" class="btn btn-lg btn-success">Lưu</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<style>
+    .account-box {
+        height: 600px;
+        width: 1000px;
+        background-color: rgba(255, 255, 255, 0.8); /* Màu nền mờ */
+        padding: 100px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Bóng mờ */
+        border: 1px solid black;
+        border-radius: 80px;
+    }
+
+    .imagebehind {
+        background-image: url('/image/slbktv.jpg');
+    }
+</style>
+
+<script>
+    function showSuccessMessage() {
+        Swal.fire({
+            title: 'Thành công!',
+            text: 'In thành công',
+            icon: 'success',
+            confirmButtonText: 'OK'
+        });
+        return false;
+    }
+</script>
+

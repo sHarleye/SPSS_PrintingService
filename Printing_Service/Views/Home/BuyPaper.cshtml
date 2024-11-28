@@ -1,0 +1,149 @@
+﻿@{
+    ViewData["Title"] = "BuyPaper";
+    Layout = "~/Views/Shared/_MainPage.cshtml";
+}
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<div class="d-flex justify-content-center align-items-center imagebehind">
+    <div class="account-box">
+        <h1 class="text-center">Mua thêm trang in</h1>
+
+        <div class="content-box">
+            <p class="text-center">Thông tin mua thêm trang</p>
+            <hr style="border-top: 3px solid #000;" />
+
+            <form class="form" >
+                <div class="row g-4">
+                    <!-- Input số trang cần mua thêm -->
+                    <div class="col-md-6">
+                        <label class="mb-3 fw-bold" for="morepaper">Nhập số trang cần mua thêm</label>
+                        <input class="form-control" type="number" id="morepaper" name="morepaper" placeholder="Nhập số trang">
+                        <br />
+                        <label class="mb-3 fw-bold">Tổng số tiền cần phải thanh toán:</label>
+                        <p class="fs-5 text-success fw-bold text-end">50.000 vnd</p>
+                        <label class="mb-3 fw-bold text-center tm" for="giaodich">Nhấn nút thanh toán hoặc quét mã QR code để giao dịch</label>
+                    </div>
+
+                    <!-- Thông số cá nhân hiện tại -->
+                    <div class="col-md-6">
+                        <label class="mb-3 fw-bold ">Thông số cá nhân hiện tại</label>
+                        <div class="card bg-warning bg-opacity-25 shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title" style="font-family: 'Arial', sans-serif;">Giao dịch của tôi</h5>
+                                <p><strong>Số trang đã mua:</strong> 30</p>
+                                <p><strong>Order đã giao dịch:</strong> 8</p>
+                                <p><strong>Tổng tiền giao dịch:</strong> 100.000 vnd 💵</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Payment Button -->
+                    <div class="col-md-6 text-center">
+                        <a asp-controller="Home" asp-action="MainPage" class="btn btn-lg btn-secondary">Trở về</a>
+                        <a href="https://bkpay.hcmut.edu.vn/bkpay/home.action" class="btn btn-lg btn-success ms-4">Thanh toán</a>
+                    </div>
+
+                    <!-- QR Code -->
+                    <div class="col-md-6 text-center">
+                        <label class="mb-3 fw-bold" for="giaodich">Mã QR code</label>
+                        <br />
+                        <div class="qr-code-container">
+                            <img class="img-fluid" src="~/Image/qrcode.png" alt="QR Code" style="max-width: 200px; border: 1px solid #ddd; border-radius: 10px;">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    .account-box {
+        width: 90%;
+        max-width: 1200px;
+        background-color: rgba(255, 255, 255, 0.9);
+        padding: 40px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        border: 1px solid black;
+        border-radius: 15px;
+    }
+
+    .content-box {
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    .imagebehind {
+        background-image: url('/image/slbktv.jpg');
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .form-control {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .buttons .btn {
+        min-width: 150px;
+    }
+
+    .qr-code-container {
+        position: relative;
+        display: inline-block;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .qr-code-container:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .qr-code-container label {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+    .card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+    .h1 {
+        text-align: center;
+    }
+
+    .account-box {
+        animation: fadeIn 1s ease-in-out;
+    }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        border-color: #6c757d;
+    }
+
+    .btn-success {
+        background-color: #28a745;
+        border-color: #28a745;
+    }
+
+        .btn-secondary:hover, .btn-success:hover {
+            opacity: 0.8;
+        }
+</style>

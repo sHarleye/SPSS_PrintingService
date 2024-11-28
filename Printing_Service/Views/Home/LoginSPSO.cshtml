@@ -1,6 +1,4 @@
-﻿@{
-    ViewData["Title"] = "Privacy Policy";
-}
+﻿
 <div class="hello ">
     <section class="banner-slider">
         <ul id="adaptive">
@@ -17,7 +15,7 @@
 <div class="overlay d-flex justify-content-center align-items-center vh-100">
     <div class="account-box bg-white p-4 rounded shadow" style="width: 100%; max-width: 400px;">
         <h2 class="text-center mb-4">Login</h2>
-        <form asp-action="MainPage" asp-controller="Home" method="post">
+        <form asp-action="MainPageSPSO" asp-controller="Home" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="mb-3">
                 <label class="form-label">Username</label>
@@ -29,7 +27,9 @@
                 <input type="password" class="form-control" />
                 <span class="text-danger"></span>
             </div>
-            
+            <div class="float-end mb-3">
+                <a asp-controller="Account" asp-action="VerifyEmail" class="text-decoration-none">Forgot password?</a>
+            </div>
             <div class="form-check mb-3">
                 <input type="checkbox" class="form-check-input" id="rememberMe">
                 <label class="form-check-label" for="rememberMe">Remember me</label>
@@ -46,39 +46,36 @@
 </div>
 
 <section id="feature">
-<div class="fe-box">
-    <img src="https://cdn.pixabay.com/photo/2021/11/14/18/36/telework-6795505_960_720.jpg" alt="">
-    <h6>Online order</h6>
-    <p>Making order easily on the website</p>
-</div>
+    <div class="fe-box">
+        <img src="https://cdn.pixabay.com/photo/2021/11/14/18/36/telework-6795505_960_720.jpg" alt="">
+        <h6>Online order</h6>
+        <p>Making order easily on the website</p>
+    </div>
 
-<div class="fe-box">
-    <img src="https://cdn.pixabay.com/photo/2017/08/30/07/52/money-2696219_1280.jpg" alt="">
-    <h6>Save Money</h6>
-    <p>Save money with our printing service</p>
-</div>
+    <div class="fe-box">
+        <img src="https://cdn.pixabay.com/photo/2017/08/30/07/52/money-2696219_1280.jpg" alt="">
+        <h6>Save Money</h6>
+        <p>Save money with our printing service</p>
+    </div>
 
-<div class="fe-box">
-    <img src="https://images.pexels.com/photos/11952303/pexels-photo-11952303.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="">
-    <h6>Easy to configure</h6>
-    <p>Edit and format the printing by your own</p>
-</div>
+    <div class="fe-box">
+        <img src="https://images.pexels.com/photos/11952303/pexels-photo-11952303.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="">
+        <h6>Easy to configure</h6>
+        <p>Edit and format the printing by your own</p>
+    </div>
 
-<div class="fe-box">
-    <img src="https://images.pexels.com/photos/8939564/pexels-photo-8939564.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="">
-    <h6>Shipping</h6>
-    <p>Fast shipping to your location</p>
-</div>
+    <div class="fe-box">
+        <img src="https://images.pexels.com/photos/8939564/pexels-photo-8939564.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="">
+        <h6>Shipping</h6>
+        <p>Fast shipping to your location</p>
+    </div>
 
-<div class="fe-box">
-    <img src="https://images.pexels.com/photos/8867435/pexels-photo-8867435.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="">
-    <h6>Support</h6>
-    <p>24/7 support for your order</p>
-</div>
+    <div class="fe-box">
+        <img src="https://images.pexels.com/photos/8867435/pexels-photo-8867435.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="">
+        <h6>Support</h6>
+        <p>24/7 support for your order</p>
+    </div>
 </section>
-
-
-
 
 
 
@@ -97,14 +94,14 @@
     }
 
     .account-box {
-        max-width: 400px; 
-        background-color: white; 
+        max-width: 400px;
+        background-color: white;
         padding: 20px;
         border-radius: 8px;
         box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Bóng mờ */
     }
 
-    .hi:hover{
+    .hi:hover {
         background-color: forestgreen !important;
     }
 
@@ -168,4 +165,5 @@
             font-family: 'Arial', sans-serif;
             font-size: 14px;
             color: #333;
+        }
 </style>
