@@ -6,6 +6,8 @@
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <style>
     .welcome-section {
         background: url(https://cdn.pixabay.com/photo/2023/03/21/20/39/facade-7868160_1280.jpg) no-repeat center center/cover;
@@ -36,8 +38,8 @@
     <div class="container ms-5 mt-3">
         <!-- Welcome Section -->
         <div class="row">
-            <div class="col-md-4 offset-md-2">
-                <div class="card welcome-section mb-4 align-items-center justify-content-center d-flex flex-column" style="width: 120%; height: 300px;">
+            <div class="col-md-5 offset-md-2 d-flex align-items-center justify-content-center">
+                <div class="lo welcome-section mb-4 align-items-center justify-content-center d-flex flex-column" style="width: 120%; height: 300px;">
                     <style>
                         .welcome-section h1 {
                             font-family: 'Sitka Display';
@@ -68,23 +70,19 @@
                 </div>
             </div>
 
-            <div class="col-md-5 offset-md-1">
-                <div class="row">
+            <div class="col-md-5 mt-3 ">
+                <div class="row lo ">
                     <!-- Transaction Section -->
-                    <div class="col-md-10">
-                        <div class="card bg-warning bg-opacity-25 shadow-sm">
-                            <div class="card-body">
-                                <h5 class="card-title fw-bold" style="font-family: 'Arial', sans-serif;">Thông tin hiện tại</h5>
-                                <p>Số máy in hiện đang hoạt động:  <strong> 3</strong></p>
-                                <p>Số máy tin tạm ngưng hoạt động:  <strong> 2</strong> </p>
-                                <p class="fw-bold">Xem lịch sử in <a class="btn text-white" style="background-color: coral; ">Here</a></p>
+                        <h1 class="text-center mb-4" style="font-family: 'Sitka Display'; font-size: 2.5rem; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Print Service Statistics</h1>
+                        <div class="row">
+                            <div class="col-md-8 offset-md-2">
+                                <canvas  id="printStatsChart"></canvas>
                             </div>
                         </div>
-                    </div>
                 </div>
             </div>
             <style>
-                .card:hover {
+                .lo:hover {
                     transform: scale(1.05);
                     transition: transform 0.3s ease-in-out;
                 }
@@ -96,7 +94,7 @@
             <div class="container mt-4 ms-5">
                 <div class="row justify-content-center align-items-center">
                     <div class="col-12">
-                        <h3 class="fw-bold text-center" style="font-family: 'Sitka Display'">Thông số trạng thái máy in</h3>
+                        <h3 class="fw-bold text-center mt-4" style="font-family: 'Sitka Display'">Thông số trạng thái máy in</h3>
                     </div>
                     <div class="col-12 ">
                         <div class="table-responsive" style="max-width: 100%;">
@@ -233,5 +231,71 @@
                 });
             }
         }
+    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+
+    <script>
+        // Sample data for services and printed pages
+        const serviceData = {
+            labels: ['Building B4','Building A4','Building B1','Building C6'],
+            datasets: [{
+                label: 'Print Orders',
+                data: [120, 200, 150, 80], // Replace with your data
+                backgroundColor: [
+                    'rgba(75, 192, 192, 0.8)',
+                    'rgba(255, 99, 132, 0.8)',
+                    'rgba(255, 206, 86, 0.8)',
+                    'rgba(54, 162, 235, 0.8)'
+                ],
+                borderColor: [
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(54, 162, 235, 1)'
+                ],
+                borderWidth: 1
+            }]
+        };
+
+
+        // Chart configuration
+        const config = {
+            type: 'pie', // You can change this to 'pie', 'line', etc.
+            data: serviceData,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Top 4 place has the most print orders'
+                    },
+                
+                        datalabels: {
+                            display: true,
+                            color: 'black',
+                            font: {
+                                family: 'Sitka Display',
+                                size: 16,
+                                weight: 'bold'
+                            },
+                            formatter: (value, context) => {
+                                return value;
+                            }
+                        
+                    }
+                },
+            },
+            plugins: [ChartDataLabels]
+        };
+
+        // Render the chart
+        const ctx = document.getElementById('printStatsChart').getContext('2d');
+        new Chart(ctx, config);
     </script>
 </body>

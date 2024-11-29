@@ -13,15 +13,15 @@
             <p class="text-center">Thông tin mua thêm trang</p>
             <hr style="border-top: 3px solid #000;" />
 
-            <form class="form" >
+            <form class="form">
                 <div class="row g-4">
                     <!-- Input số trang cần mua thêm -->
                     <div class="col-md-6">
                         <label class="mb-3 fw-bold" for="morepaper">Nhập số trang cần mua thêm</label>
-                        <input class="form-control" type="number" id="morepaper" name="morepaper" placeholder="Nhập số trang">
+                        <input class="form-control" type="number" id="morepaper" name="morepaper" placeholder="Nhập số trang" oninput="updateTotal()">
                         <br />
                         <label class="mb-3 fw-bold">Tổng số tiền cần phải thanh toán:</label>
-                        <p class="fs-5 text-success fw-bold text-end">50.000 vnd</p>
+                        <p id="totalAmount" class="fs-5 text-success fw-bold text-end">0 vnd</p>
                         <label class="mb-3 fw-bold text-center tm" for="giaodich">Nhấn nút thanh toán hoặc quét mã QR code để giao dịch</label>
                     </div>
 
@@ -41,7 +41,7 @@
                     <!-- Payment Button -->
                     <div class="col-md-6 text-center">
                         <a asp-controller="Home" asp-action="MainPage" class="btn btn-lg btn-secondary">Trở về</a>
-                        <a href="https://bkpay.hcmut.edu.vn/bkpay/home.action" class="btn btn-lg btn-success ms-4">Thanh toán</a>
+                        <a onclick="showSuccessMessage()"  class="btn btn-lg btn-success ms-4">Thanh toán</a>
                     </div>
 
                     <!-- QR Code -->
@@ -57,6 +57,17 @@
         </div>
     </div>
 </div>
+<script>
+    function updateTotal() {
+        var morepaper = document.getElementById("morepaper").value;
+        if (morepaper < 0) {
+            morepaper = 0;
+            document.getElementById("morepaper").value = 0;
+        }
+        var totalAmount = morepaper * 1000;
+        document.getElementById("totalAmount").innerText = totalAmount.toLocaleString() + " vnd";
+    }
+</script>
 
 <style>
     .account-box {
@@ -147,3 +158,15 @@
             opacity: 0.8;
         }
 </style>
+
+<script>
+    function showSuccessMessage() {
+        Swal.fire({
+            title: 'Thành công!',
+            text: 'Đã lưu thành công',
+            icon: 'success',
+            confirmButtonText: 'OK'
+        });
+        return false;
+    }
+</script>
