@@ -5,49 +5,32 @@
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+
 <div class="d-flex justify-content-center align-items-center imagebehind">
     <div class="account-box">
-        <h1 class="mb-5">Quản lý cài đặt in</h1>
+        <h1 class="mb-5 text-center">Quản lý cài đặt in</h1>
 
-        <div class="content-box">
-            <p>Thông số cài đặt in</p>
+        <div class="content-box" onsubmit="return showSuccessMessage()">
+            <p class="text-center">Thông số cài đặt in</p>
             <hr style="border-top: 3px solid #000;" />
-
-            <form class="form" onsubmit="return showSuccessMessage()">
+                
+            <form class="form">
                 <div class="row ms-5">
-                    <div class="col-md-6 form-group">
-                        <label class="mb-3 fw-bold" for="date-supply">Ngày cung cấp giấy</label>
-                        <br />
-                        <input class="mb-5" type="date" id="date-supply" name="date-supply">
-
-                        <br />
-
-                        <label class="mb-3 fw-bold" for="history-date">Ngày lưu lịch sử</label>
-                        <br />
-                        <input class="mb-5" type="date" id="history-date" name="history-date">
+                    <div class="col-md-6 form-group mb-4">
+                        <label class="mb-2 fw-bold" for="date-supply">Ngày cung cấp giấy</label>
+                        <input class="form-control input-sm" type="date" id="date-supply" name="date-supply">
                     </div>
-                    <div class="col-md-6 form-group">
-                        <label class="mb-3 fw-bold" for="printerinfo">Thông tin máy tin</label>
-                        <br />
-                        <input class="mb-5" type="text" id="printerìno" name="printerinfo" placeholder="HP 107a (4ZB77A)">
-
-                        <br />
-
-                        <label class="mb-3 fw-bold" for="printerplace">Nơi đặt máy in</label>
-                        <br />
-                        <input class="mb-5" type="text" id="printerplace" name="printerplace" placeholder="B1">
-                        
-
-
+                    <div class="col-md-6 form-group mb-4">
+                        <label class="mb-2 fw-bold" for="history-date">Ngày lưu lịch sử</label>
+                        <input class="form-control input-sm" type="date" id="history-date" name="history-date">
+                    </div>  
+                    <div class="col-md-6 form-group mb-5 mt-4">
+                        <label class="mb-2 fw-bold" for="pages-per-semester">Số trang giấy được cung cấp mỗi học kỳ</label>
+                        <input class="form-control input-sm" type="number" id="pages-per-semester" name="pages-per-semester" placeholder="Nhập số trang">
                     </div>
-                    <div class="col-md-6 form-group">
-                        <label class="mb-3 fw-bold" for="pages-per-semester">Số trang giấy được cung cấp mỗi học kỳ</label>
-                        <br />
-                        <input class="mb-5" type="number" id="pages-per-semester" name="pages-per-semester" placeholder="Nhập số trang">
-                    </div>
-                    <div class="col-md-6 form-group">
+                    <div class="col-md-6 form-group mb-5 mt-4">
                         <label class="mb-2 fw-bold">Định dạng file cho phép</label>
-                        <div class="mb-5">
+                        <div class="mt-2">
                             <label class="me-3"><input type="checkbox" name="format" value="pdf"> .pdf</label>
                             <label class="me-3"><input type="checkbox" name="format" value="docx"> .docx</label>
                             <label class="me-3"><input type="checkbox" name="format" value="pptx"> .pptx</label>
@@ -56,10 +39,8 @@
                     </div>
                 </div>
                 <div class="buttons d-flex justify-content-center align-items-center me-3">
-                    <a asp-controller="Home" asp-action="MainPageSPSO" class="btn btn btn-secondary me-5">Trở về</a>
-                    <button type="submit" class="btn btn btn-primary me-5">In Report</button>
-                    <button type="submit" class="btn btn btn-success">Lưu</button>
-                   
+                    <a asp-controller="Home" asp-action="MainPageSPSO" class="btn btn-lg btn-secondary me-5">Trở về</a>
+                    <button  type="submit" class="btn btn-lg btn-success">Lưu</button>
                 </div>
             </form>
         </div>
@@ -89,6 +70,14 @@
         background-position: center;
         height: 90vh;
         width: 100%;
+    }
+
+    .form-control {
+        width: 100%;
+    }
+
+    .input-sm {
+        width: 80%;
     }
 </style>
 
