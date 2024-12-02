@@ -1,0 +1,280 @@
+﻿
+    @{
+        ViewData["Title"] = "EditPrinter";
+        Layout = "~/Views/Shared/_MainPageSPSO.cshtml";
+    }
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .printer-card {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .printer-card img {
+            width: 80px;
+            margin-top: 20px;
+        }
+
+        .printer-card h3 {
+            margin: 10px 0;
+        }
+
+        .status {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .status.active {
+            color: green;
+        }
+
+        .status.inactive {
+            color: red;
+        }
+
+        .status.unknown {
+            color: orange;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: space-around;
+            margin: 10px 0 20px;
+        }
+
+        .button-group button {
+            background-color: #0078d4;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .button-group button.off {
+            background-color: red;
+        }
+
+        .button-group button.edit {
+            background-color: orange;
+        }
+
+        .button-group button:hover {
+            opacity: 0.8;
+        }
+
+        .account-box {
+            width: 80%;
+            max-width: 1200px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 50px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            border: 1px solid black;
+            border-radius: 20px;
+        }
+
+        .content-box {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .imagebehind {
+            background-image: url('/image/slbktv.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 120vh;
+            width: 100%;
+        }
+    </style>
+
+    <body>
+        <div class="d-flex justify-content-center align-items-center imagebehind">
+            <div class="account-box">
+                <h1 class="text-center">Cài đặt máy in</h1>
+                <div class="content-box">
+                    <p class="text-center">Thông tin máy in</p>
+                    <div class="text-center mb-3">
+                        <button class="btn btn-success">Add Printer</button>
+                    </div>
+                    <hr style="border-top: 3px solid #000;" />
+                    <div class="container">
+                        <!-- Printer 1 -->
+                        <div class="printer-card">
+                            <img src="~/Image/printer.png" alt="Printer">
+                            <h3>Máy in 1</h3>
+                            <span class="badge bg-success mb-2">Hoạt động</span>
+                            <div class="form-check form-switch ">
+                                <label class="form-check-label  fw-bold" style="margin-right:15%;" for="feature1">Enable/Disable</label>
+                                <input class="form-check-input" style="margin-left: 36%" type="checkbox" id="feature1" checked onclick="return toggleStatus(this, 'feature1')" data-status="active">
+                            </div>
+                            <div class="button-group" style="margin-top: 10%;">
+                                <button class="edit" data-bs-toggle="modal" data-bs-target="#editPrinterModal">Chỉnh sửa</button>
+                            </div>
+                        </div>
+                        <!-- Printer 2 -->
+                        <div class="printer-card">
+                            <img src="~/Image/printer.png" alt="Printer">
+                            <h3>Máy in 2</h3>
+                            <span class="badge bg-success mb-2">Hoạt động</span>
+                            <div class="form-check form-switch ">
+                                <label class="form-check-label  fw-bold" style="margin-right:15%;" for="feature1">Enable/Disable</label>
+                                <input class="form-check-input" style="margin-left: 36%" type="checkbox" id="feature1" checked onclick="return toggleStatus(this, 'feature1')" data-status="active">
+                            </div>
+                            <div class="button-group" style="margin-top: 10%;">
+                                <button class="edit" data-bs-toggle="modal" data-bs-target="#editPrinterModal">Chỉnh sửa</button>
+                            </div>
+                        </div>
+                        <!-- Printer 3 -->
+                        <div class="printer-card">
+                            <img src="~/Image/printer.png" alt="Printer">
+                            <h3>Máy in 3</h3>
+                            <span class="badge bg-success mb-2">Hoạt động</span>
+                            <div class="form-check form-switch ">
+                                <label class="form-check-label  fw-bold" style="margin-right:15%;" for="feature1">Enable/Disable</label>
+                                <input class="form-check-input" style="margin-left: 36%" type="checkbox" id="feature1" checked onclick="return toggleStatus(this, 'feature1')" data-status="active">
+                            </div>
+                            <div class="button-group" style="margin-top: 10%;">
+                                <button class="edit" data-bs-toggle="modal" data-bs-target="#editPrinterModal">Chỉnh sửa</button>
+                            </div>
+                        </div>
+                        <!-- Printer 4 -->
+                        <div class="printer-card">
+                            <img src="~/Image/printer.png" alt="Printer">
+                            <h3>Máy in 4</h3>
+                            <span class="badge bg-success mb-2">Hoạt động</span>
+                            <div class="form-check form-switch ">
+                                <label class="form-check-label  fw-bold" style="margin-right:15%;" for="feature1">Enable/Disable</label>
+                                <input class="form-check-input" style="margin-left: 36%" type="checkbox" id="feature1" checked onclick="return toggleStatus(this, 'feature1')" data-status="active">
+                            </div>
+                            <div class="button-group" style="margin-top: 10%;">
+                                <button class="edit" data-bs-toggle="modal" data-bs-target="#editPrinterModal">Chỉnh sửa</button>
+                            </div>
+                        </div>
+                        <!-- Printer 5 -->
+                        <div class="printer-card">
+                            <img src="~/Image/printer.png" alt="Printer">
+                            <h3>Máy in 5</h3>
+                            <span class="badge bg-success mb-2">Hoạt động</span>
+                            <div class="form-check form-switch ">
+                                <label class="form-check-label  fw-bold" style="margin-right:15%;" for="feature1">Enable/Disable</label>
+                                <input class="form-check-input" style="margin-left: 36%" type="checkbox" id="feature1" checked onclick="return toggleStatus(this, 'feature1')" data-status="active">
+                            </div>
+                            <div class="button-group" style="margin-top: 10%;">
+                                <button class="edit" data-bs-toggle="modal" data-bs-target="#editPrinterModal">Chỉnh sửa</button>
+                            </div>
+                        </div>
+                        <!-- Printer 6 -->
+                        <div class="printer-card">
+                            <img src="~/Image/printer.png" alt="Printer">
+                            <h3>Máy in 6</h3>
+                            <span class="badge bg-success mb-2">Hoạt động</span>
+                            <div class="form-check form-switch ">
+                                <label class="form-check-label  fw-bold" style="margin-right:15%;" for="feature1">Enable/Disable</label>
+                                <input class="form-check-input" style="margin-left: 36%" type="checkbox" id="feature1" checked onclick="return toggleStatus(this, 'feature1')" data-status="active">
+                            </div>
+                            <div class="button-group" style="margin-top: 10%;">
+                                <button class="edit" data-bs-toggle="modal" data-bs-target="#editPrinterModal">Chỉnh sửa</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+                  
+
+    <!-- Modal -->
+    <div class="modal fade" id="editPrinterModal" tabindex="-1" aria-labelledby="editPrinterModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold" id="editPrinterModalLabel">Chỉnh sửa thông tin máy in</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editPrinterForm">
+                        <div class="mb-3">
+                            <label for="printerName" class="form-label">Tên máy in</label>
+                            <input type="text" class="form-control" id="printerName" required>
+                        </div>
+                       
+                        <div class="mb-3">
+                            <label for="printerLocation" class="form-label">Vị trí</label>
+                            <input type="text" class="form-control" id="printerLocation">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-primary" id="savePrinterChanges">Lưu thay đổi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    </body>
+
+    <script>
+        function toggleStatus(checkbox, id) {
+            const status = checkbox.checked ? 'active' : 'inactive';
+            const badge = checkbox.closest('.printer-card').querySelector('.badge');
+
+            // Update status visually
+            if (status === 'active') {
+                badge.classList.remove('bg-danger');
+                badge.classList.add('bg-success');
+                badge.textContent = 'Hoạt động';
+            } else {
+                badge.classList.remove('bg-success');
+                badge.classList.add('bg-danger');
+                badge.textContent = 'Tạm ngưng hoạt động';
+            }
+
+            // Handle success or error messages based on the toggle
+            if (status === 'active') {
+                Swal.fire({
+                    title: 'Thành công!',
+                    text: 'Cấp quyền thành công',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                });
+            } else {
+                Swal.fire({
+                    title: 'Thành công!',
+                    text: 'Hủy cấp quyền thành công',
+                    icon: 'warning',
+                    confirmButtonText: 'OK'
+                });
+            }
+        }
+
+    
+
+
+
+    </script>
+
+

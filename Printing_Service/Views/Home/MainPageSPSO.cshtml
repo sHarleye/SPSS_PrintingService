@@ -32,6 +32,7 @@
         text-align: center;
     }
 
+
    
 </style>
 
@@ -95,7 +96,9 @@
             <div class="container mt-4 ms-5">
                 <div class="row justify-content-center align-items-center">
                     <div class="col-12">
+                       
                         <h3 class="fw-bold text-center mt-4" style="font-family: 'Sitka Display'">Thông số trạng thái máy in</h3>
+                        
                     </div>
                     <div class="col-12 ">
                         <div class="table-responsive" style="max-width: 100%;">
@@ -108,79 +111,53 @@
                                         <th>Tổng số lần đã in</th>
                                         <th>Số lần in hôm nay</th>
                                         <th>Status</th>
-                                        <th>Cấp quyền</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td>Oct 12, 2024 07:35:06 AM</td>
                                         <td>P01</td>
-                                        <td>B4</td>
+                                        <td>Building B4</td>
                                         <td>200</td>
                                         <td>10</td>
                                         <td><span class="badge bg-success">Hoạt động</span></td>
-                                        <td>
-                                            <div class="form-check form-switch">
-                                                <input class="form-check-input" type="checkbox" id="feature1" checked onclick="return toggleStatus(this, 'feature1')" data-status="active">
-                                                <label class="form-check-label fw-bold" for="feature1">Enable/Disable</label>
-                                            </div>
-                                        </td>
+                                       
                                     </tr>
                                     <tr>
                                         <td>Oct 12, 2024 07:35:06 AM</td>
                                         <td>P02</td>
-                                        <td>B8</td>
+                                        <td>Building B8</td>
                                         <td>200</td>
                                         <td>10</td>
                                         <td><span class="badge bg-success">Hoạt động</span></td>
-                                        <td>
-                                            <div class="form-check form-switch">
-                                                <input class="form-check-input" type="checkbox" id="feature2" checked onclick="return toggleStatus(this, 'feature2')" data-status="active">
-                                                <label class="form-check-label fw-bold" for="feature2">Enable/Disable</label>
-                                            </div>
-                                        </td>
+                                        
                                     </tr>
                                     <tr>
                                         <td>Oct 12, 2024 07:35:06 AM</td>
                                         <td>P03</td>
-                                        <td>B2</td>
+                                        <td>Building B2</td>
                                         <td>200</td>
                                         <td>10</td>
-                                        <td><span class="badge bg-danger">Tạm ngưng hoạt động</span></td>
-                                        <td>
-                                            <div class="form-check form-switch">
-                                                <input class="form-check-input" type="checkbox" id="feature3" onclick="return toggleStatus(this, 'feature3')" data-status="inactive">
-                                                <label class="form-check-label fw-bold" for="feature3">Enable/Disable</label>
-                                            </div>
-                                        </td>
+                                        <td><span class="badge bg-success">Hoạt động</span></td>
+                                        
                                     </tr>
                                     <tr>
                                         <td>Oct 12, 2024 07:35:06 AM</td>
                                         <td>P04</td>
-                                        <td>B9</td>
+                                        <td>Building B9</td>
                                         <td>200</td>
                                         <td>10</td>
                                         <td><span class="badge bg-success">Hoạt động</span></td>
-                                        <td>
-                                            <div class="form-check form-switch">
-                                                <input class="form-check-input" type="checkbox" id="feature4" checked onclick="return toggleStatus(this, 'feature4')" data-status="active">
-                                                <label class="form-check-label fw-bold" for="feature4">Enable/Disable</label>
-                                            </div>
-                                        </td>
+                                        
                                     </tr>
                                     <tr>
                                         <td>Oct 12, 2024 07:35:06 AM</td>
                                         <td>P05</td>
-                                        <td>C6</td>
+                                        <td>Building C6</td>
                                         <td>200</td>
                                         <td>10</td>
-                                        <td><span class="badge bg-danger">Tạm ngưng hoạt động</span></td>
-                                        <td>
-                                            <div class="form-check form-switch">
-                                                <input class="form-check-input" type="checkbox" id="feature5" onclick="return toggleStatus(this, 'feature5')" data-status="inactive">
-                                                <label class="form-check-label fw-bold" for="feature5">Enable/Disable</label>
-                                            </div>
-                                        </td>
+                                        <td><span class="badge bg-success">Hoạt động</span></td>
+                                       
                                     </tr>
                                 </tbody>
 
@@ -192,42 +169,7 @@
             </div>
         </div>
     </div>
-    <script>
-        function toggleStatus(checkbox, id) {
-            const status = checkbox.checked ? 'active' : 'inactive';
-            const badge = document.querySelector(`#${id}`).closest('tr').querySelector('.badge');
-            const label = checkbox.closest('.form-check').querySelector('label');
-
-            // Update status visually
-            if (status === 'active') {
-                badge.classList.remove('bg-danger');
-                badge.classList.add('bg-success');
-                badge.textContent = 'Hoạt động';
-            } else {
-                badge.classList.remove('bg-success');
-                badge.classList.add('bg-danger');
-                badge.textContent = 'Tạm ngưng hoạt động';
-            }
-
-            // Handle success or error messages based on the toggle
-            if (status === 'active') {
-                Swal.fire({
-                    title: 'Thành công!',
-                    text: 'Cấp quyền thành công',
-                    icon: 'success',
-                    confirmButtonText: 'OK'
-                });
-            } else {
-                Swal.fire({
-                    title: 'Thành công!',
-                    text: 'Hủy cấp quyền thành công',
-                    icon: 'warning',
-                    confirmButtonText: 'OK'
-                });
-            }
-        }
-    </script>
-
+   
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
