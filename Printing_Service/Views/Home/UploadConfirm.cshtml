@@ -17,17 +17,19 @@
             <label class="info">my_cv.pdf</label>
             <br />
             <label>Số trang có sẵn</label>
-            <label class="info">5 (A3)</label>
+            <label class="info">8 (A3)</label>
             <br />
             <label>Số trang cần để in</label>
-            <label class="info">2 (A3)</label>
+            <label class="info">4 (A3)</label>
             <br />
             <label for="printers">Máy in</label>
             <select name="printers" id="printers">
                 <option value="" disabled selected></option>
-                <option value="1">Máy in 1</option>
-                <option value="2">Máy in 2</option>
-                <option value="3">Máy in 3</option>
+                <option value="1">Brother HL-L2321D</option>
+                <option value="2">HP 107w Wifi (4ZB78A)</option>
+                <option value="3" disabled>HP LaserJet MFP 135w Wifi (4ZB83A)</option>
+                <option value="4">Canon PIXMA GM2070 Wifi</option>
+                <option value="5" disabled>Epson EcoTank L3250 Wifi (C11CJ67503)</option>
             </select>
             <div class="config">
                 <button class="next" onclick="location.href='@Url.Action("UploadConfig", "Home")'">Trở về</button>
@@ -151,6 +153,20 @@
         background-color: skyblue;
         border-radius: 5px;
         margin-bottom: 25px;
+    }
+
+        select option {
+            padding-left: 20px;
+            background-repeat: no-repeat;
+            background-position: left center;
+        }
+
+    .available {
+        background-image: radial-gradient(circle, green 6px, transparent 6px);
+    }
+
+    .unavailable {
+        background-image: radial-gradient(circle, red 6px, transparent 6px);
     }
 </style>
 
