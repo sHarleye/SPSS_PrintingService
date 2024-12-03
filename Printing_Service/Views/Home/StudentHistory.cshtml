@@ -1,0 +1,157 @@
+﻿@{
+    ViewData["Title"] = "StudentHistory";
+    Layout = "~/Views/Shared/_MainPage.cshtml";
+}
+
+<div class="d-flex justify-content-center align-items-center imagebehind">
+    <div class="account-box">
+        <h1 class="text-center">Lịch sử in</h1>
+        <div class="content-box">
+            <p class="text-center">Thông tin lịch sử in</p>
+            <hr style="border-top: 3px solid #000;" />
+
+            <div class="col-12 ">
+                <div class="table-responsive" style="max-width: 100%;">
+                    <table class="table table-bordered table-hover table-striped">
+                        <thead class="table" style="background-color: #121C57; color: whitesmoke;">
+                            <tr class="text-center">
+                                <th class="col1">Ngày in</th>
+                                <th class="col2">Tên tài liệu</th>
+                                <th class="col3">Số trang (A4)</th>
+                                <th class="col4">Máy in</th>
+                                <th class="col5">In màu</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Nov 3, 2024 12:00:00 AM</td>
+                                <td>SampleFile.pdf</td>
+                                <td>5</td>
+                                <td>10</td>
+                                <td>Có</td>
+                            </tr>
+                            <tr>
+                                <td>Nov 3, 2024 12:00:00 AM</td>
+                                <td>SampleFile.pdf</td>
+                                <td>5</td>
+                                <td>10</td>
+                                <td>Có</td>
+                            </tr>
+                            <tr>
+                                <td>Nov 3, 2024 12:00:00 AM</td>
+                                <td>SampleFile.pdf</td>
+                                <td>5</td>
+                                <td>10</td>
+                                <td>Có</td>
+                            </tr>
+                            <tr>
+                                <td>Nov 3, 2024 12:00:00 AM</td>
+                                <td>SampleFile.pdf</td>
+                                <td>5</td>
+                                <td>10</td>
+                                <td>Có</td>
+                            </tr>
+                            <tr>
+                                <td>Nov 3, 2024 12:00:00 AM</td>
+                                <td>SampleFile.pdf</td>
+                                <td>5</td>
+                                <td>10</td>
+                                <td>Có</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .account-box {
+        width: 90%;
+        max-width: 1200px;
+        background-color: rgba(255, 255, 255, 0.9);
+        padding: 40px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        border: 1px solid black;
+        border-radius: 15px;
+    }
+
+    .content-box {
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    .imagebehind {
+        background-image: url('/image/slbktv.jpg');
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .form-control {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .buttons .btn {
+        min-width: 150px;
+    }
+
+    .qr-code-container {
+        position: relative;
+        display: inline-block;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .qr-code-container:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .qr-code-container label {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+    .card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+    .h1 {
+        text-align: center;
+    }
+
+    .account-box {
+        animation: fadeIn 1s ease-in-out;
+    }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        border-color: #6c757d;
+    }
+
+    .btn-success {
+        background-color: #28a745;
+        border-color: #28a745;
+    }
+
+        .btn-secondary:hover, .btn-success:hover {
+            opacity: 0.8;
+        }
+</style>
