@@ -272,6 +272,10 @@
         fileItem.querySelector(".delete").addEventListener("click", function (event) {
             event.stopPropagation();
             fileItem.remove();
+
+            addingFiles.style.display = "block";
+            previewArea.style.display = "none";
+            configSection.style.display = "none";
         });
     }
 
