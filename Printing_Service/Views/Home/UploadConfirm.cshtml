@@ -3,35 +3,72 @@
     Layout = "~/Views/Shared/_Upload.cshtml";
 }
 
-<div class="hello">
-    <img src="~/Image/white.jpg" alt="">
-</div>
-
-<div class="overlay d-flex justify-content-center align-items-center vh-100">
-    <div class="print-info p-4">
-        <div class="print-confirm">
-            <h2 style="text-decoration: underline;text-decoration-color:gray;text-underline-offset: 20px;text-align:center;">Thông báo trạng thái</h2>
-            <br />
-            <br />
-            <label>Tài liệu</label>
-            <label class="info">my_cv.pdf</label>
-            <br />
-            <label>Số trang có sẵn</label>
-            <label class="info">8 (A3)</label>
-            <br />
-            <label>Số trang cần để in</label>
-            <label class="info">4 (A3)</label>
-            <br />
-            <label>Máy in</label>
-            <label class="info">Brother HL-L2321D</label>
-            <div class="config">
-                <button class="next" onclick="location.href='@Url.Action("UploadConfig", "Home")'">Trở về</button>
-                <button class="next" id="start">Tiếp theo</button>
+<body>
+    <div class="d-flex justify-content-center align-items-center imagebehind">
+        <div class="account-box">
+            <h1 class="text-center">Chọn máy in</h1>
+            <div class="content-box">
+                <hr style="border-top: 3px solid #000;" />
+                <div class="container">
+                    <!-- Printer 1 -->
+                    <div class="printer-card">
+                        <img src="~/Image/printer.png" alt="Printer">
+                        <h3>Máy in 1</h3>
+                        <span class="badge bg-success mb-2">Hoạt động</span>
+                        <div class="button-group" style="margin-top: 10%;">
+                            <button class="print" id="1">Chọn</button>
+                        </div>
+                    </div>
+                    <!-- Printer 2 -->
+                    <div class="printer-card">
+                        <img src="~/Image/printer.png" alt="Printer">
+                        <h3>Máy in 2</h3>
+                        <span class="badge bg-success mb-2">Hoạt động</span>
+                        <div class="button-group" style="margin-top: 10%;">
+                            <button class="print" id="2">Chọn</button>
+                        </div>
+                    </div>
+                    <!-- Printer 3 -->
+                    <div class="printer-card">
+                        <img src="~/Image/printer.png" alt="Printer">
+                        <h3>Máy in 3</h3>
+                        <span class="badge bg-success mb-2">Hoạt động</span>
+                        <div class="button-group" style="margin-top: 10%;">
+                            <button class="print" id="3">Chọn</button>
+                        </div>
+                    </div>
+                    <!-- Printer 4 -->
+                    <div class="printer-card">
+                        <img src="~/Image/printer.png" alt="Printer">
+                        <h3>Máy in 4</h3>
+                        <span class="badge bg-success mb-2">Hoạt động</span>
+                        <div class="button-group" style="margin-top: 10%;">
+                            <button class="print" id="4">Chọn</button>
+                        </div>
+                    </div>
+                    <!-- Printer 5 -->
+                    <div class="printer-card">
+                        <img src="~/Image/printer.png" alt="Printer">
+                        <h3>Máy in 5</h3>
+                        <span class="badge bg-success mb-2">Hoạt động</span>
+                        <div class="button-group" style="margin-top: 10%;">
+                            <button class="print" id="5">Chọn</button>
+                        </div>
+                    </div>
+                    <!-- Printer 6 -->
+                    <div class="printer-card">
+                        <img src="~/Image/printer.png" alt="Printer">
+                        <h3>Máy in 6</h3>
+                        <span class="badge bg-danger mb-2">Tạm ngưng hoạt động</span>
+                        <div class="button-group" style="margin-top: 10%;">
+                            <button class="print" id="6" disabled>Chọn</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
     </div>
-</div>
+</body>
 
 <div class="overlay2" id="progress">
     <div class="print-progress">
@@ -39,7 +76,7 @@
         <br />
         <br />
         <label class="prog" style="text-align:center;">Tài liệu</label>
-        <label class="prog" style="text-align:center;">my_cv.pdf</label>
+        <label class="prog" style="text-align:center;">sample.pdf</label>
         <br />
         <p style="text-align:center;color:mediumseagreen;font-weight:bold;">• In thành công</p>
         <br />
@@ -50,17 +87,111 @@
 </div>
 
 <style>
-    .overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
+    .imagebehind {
+        background-image: url('/image/white.jpg');
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
         width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.2);
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f9;
+    }
+
+    .container {
         display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
         justify-content: center;
-        align-items: center;
-        z-index: 1000;
+        padding: 20px;
+    }
+
+    .printer-card {
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        width: 300px;
+        text-align: center;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+        .printer-card img {
+            width: 80px;
+            margin-top: 20px;
+        }
+
+        .printer-card h3 {
+            margin: 10px 0;
+        }
+
+    .status {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+
+        .status.active {
+            color: green;
+        }
+
+        .status.inactive {
+            color: red;
+        }
+
+        .status.unknown {
+            color: orange;
+        }
+
+    .button-group {
+        display: flex;
+        justify-content: space-around;
+        margin: 10px 0 20px;
+    }
+
+        .button-group button {
+            background-color: forestgreen;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+            .button-group button.off {
+                background-color: red;
+            }
+
+            .button-group button.edit {
+                background-color: orange;
+            }
+
+            .button-group button:hover {
+                opacity: 0.8;
+            }
+
+            .button-group button:disabled {
+                background-color: gray;
+                opacity: 0.8;
+                cursor: not-allowed;
+            }
+
+    .account-box {
+        width: 80%;
+        max-width: 1200px;
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 50px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        border: 1px solid black;
+        border-radius: 20px;
+    }
+
+    .content-box {
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
     }
 
     .overlay2 {
@@ -138,36 +269,15 @@
     .info {
         text-align: center;
     }
-
-    select {
-        width: 200px;
-        height: 35px;
-        border: none;
-        background-color: skyblue;
-        border-radius: 5px;
-        margin-bottom: 25px;
-    }
-
-        select option {
-            padding-left: 20px;
-            background-repeat: no-repeat;
-            background-position: left center;
-        }
-
-    .available {
-        background-image: radial-gradient(circle, green 6px, transparent 6px);
-    }
-
-    .unavailable {
-        background-image: radial-gradient(circle, red 6px, transparent 6px);
-    }
 </style>
 
 <script>
-    document.getElementById('start').addEventListener('click', function () {
-        // Hide the first overlay
-        document.querySelector('.overlay').style.display = 'none';
-        // Show the second overlay
-        document.getElementById('progress').style.display = 'flex';
+    const printButtons = document.querySelectorAll('.print');
+
+    printButtons.forEach(button => {
+        button.addEventListener('click', function () {
+             document.getElementById('progress').style.display = 'flex';
+        });
     });
+
 </script>

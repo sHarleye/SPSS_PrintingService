@@ -3,36 +3,21 @@
     Layout = "~/Views/Shared/_Upload.cshtml";
 }
 
-<div class="hello">
-    <img src="~/Image/white.jpg" alt="">
-</div>
-
-<div class="overlay d-flex justify-content-center align-items-center vh-100">
+<div class="d-flex justify-content-center align-items-center imagebehind">
     <div class="upload-box p-4">
         <div class="print-preview">
-            <div class="preview">
-                <img src="~/Image/preview.JPG" width="325">
-            </div>
+            <iframe src="~/Image/sample.pdf"
+                    frameborder="0"
+                    width="100%"
+                    height="100%"
+                    style="border-radius: 8px;">
+            </iframe>
         </div>
         <div class="print-config">
             <br />
-            <p style="text-align:center;"><strong>Thiết lập cấu hình in</strong></p>
-            <label for="campus">Cơ sở</label>
-            <select name="campus" id="campus">
-                <option value="" disabled selected></option>
-                <option value="cs1">Cơ sở 1</option>
-                <option value="cs2">Cơ sở 2</option>
-            </select>
             <br />
-            <label for="printers">Máy in</label>
-            <select name="printers" id="printers">
-                <option value="" disabled selected></option>
-                <option value="1">Brother HL-L2321D</option>
-                <option value="2">HP 107w Wifi (4ZB78A)</option>
-                <option value="3" disabled>HP LaserJet MFP 135w Wifi (4ZB83A)</option>
-                <option value="4">Canon PIXMA GM2070 Wifi</option>
-                <option value="5" disabled>Epson EcoTank L3250 Wifi (C11CJ67503)</option>
-            </select>
+            <br />
+            <p style="text-align:center;"><strong>Thiết lập cấu hình in</strong></p>
             <br />
             <label for="pages">Chọn trang cần in</label>
             <input type="text" name="pages" id="pages" placeholder="e.g. 1-5, 8, 11-13"/>
@@ -75,17 +60,12 @@
 </div>
 
 <style>
-    .overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
+    .imagebehind {
+        background-image: url('/image/white.jpg');
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
         width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.2);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 1000;
     }
 
     .upload-box {
@@ -103,19 +83,20 @@
 
     .print-preview {
         margin: auto;
-        width: 500px;
-        height: 550px;
+        width: 600px;
+        height: 650px;
         background-color: rgba(255, 255, 255, 0.8);
         box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
         display: flex;
         border-radius: 8px;
         justify-content: center;
         align-items: center;
+        border: 1px solid black;
     }
 
     .preview {
-        width: 450px;
-        height: 500px;
+        width: 550px;
+        height: 600px;
         background-color: rgb(30, 30, 30);
         padding: 20px;
         text-align: center;
@@ -123,11 +104,12 @@
 
     .print-config {
         margin: auto;
-        width: 500px;
-        height: 550px;
+        width: 600px;
+        height: 650px;
         background-color: rgba(255, 255, 255, 0.8);
         box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
         border-radius: 8px;
+        border: 1px solid black;
     }
 
     .delete {
@@ -169,6 +151,6 @@
         border: none;
         background-color: skyblue;
         border-radius: 5px;
-        margin-bottom: 25px;
+        margin-bottom: 45px;
     }
 </style>
