@@ -4,11 +4,11 @@
 }
 
 <div class="hello">
-    <img src="~/Image/slbktv.jpg" alt="">
+    <img src="~/Image/white.jpg" alt="">
 </div>
 
 <div class="overlay d-flex justify-content-center align-items-center vh-100">
-    <div class="print-info p-4 rounded shadow" style="width: 100%; max-width: 1000px;">
+    <div class="print-info p-4">
         <div class="print-confirm">
             <h2 style="text-decoration: underline;text-decoration-color:gray;text-underline-offset: 20px;text-align:center;">Thông báo trạng thái</h2>
             <br />
@@ -22,15 +22,8 @@
             <label>Số trang cần để in</label>
             <label class="info">4 (A3)</label>
             <br />
-            <label for="printers">Máy in</label>
-            <select name="printers" id="printers">
-                <option value="" disabled selected></option>
-                <option value="1">Brother HL-L2321D</option>
-                <option value="2">HP 107w Wifi (4ZB78A)</option>
-                <option value="3" disabled>HP LaserJet MFP 135w Wifi (4ZB83A)</option>
-                <option value="4">Canon PIXMA GM2070 Wifi</option>
-                <option value="5" disabled>Epson EcoTank L3250 Wifi (C11CJ67503)</option>
-            </select>
+            <label>Máy in</label>
+            <label class="info">Brother HL-L2321D</label>
             <div class="config">
                 <button class="next" onclick="location.href='@Url.Action("UploadConfig", "Home")'">Trở về</button>
                 <button class="next" id="start">Tiếp theo</button>
@@ -85,7 +78,7 @@
 
     .print-info {
         display: flex;
-        max-width: 1000px;
+        width: 1000px;
         background-color: rgba(255, 255, 255, 0.8);
         padding: 20px;
         border-radius: 8px;

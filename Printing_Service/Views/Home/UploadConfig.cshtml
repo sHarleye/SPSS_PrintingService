@@ -4,24 +4,44 @@
 }
 
 <div class="hello">
-    <img src="~/Image/slbktv.jpg" alt="">
+    <img src="~/Image/white.jpg" alt="">
 </div>
 
 <div class="overlay d-flex justify-content-center align-items-center vh-100">
-    <div class="upload-box p-4 rounded shadow" style="width: 100%; max-width: 1000px;">
+    <div class="upload-box p-4">
         <div class="print-preview">
             <div class="preview">
-                <p>PRINT PREVIEW</p>
+                <img src="~/Image/preview.JPG" width="325">
             </div>
         </div>
         <div class="print-config">
-            <label for="pages">Chọn trang cần in</label>
-            <select name="pages" id="pages">
+            <br />
+            <p style="text-align:center;"><strong>Thiết lập cấu hình in</strong></p>
+            <label for="campus">Cơ sở</label>
+            <select name="campus" id="campus">
                 <option value="" disabled selected></option>
-                <option value="all">Tất cả</option>
-                <option value="odd">Trang lẻ</option>
-                <option value="even">Trang chẵn</option>
-                <option value="custom">Tùy chọn</option>
+                <option value="cs1">Cơ sở 1</option>
+                <option value="cs2">Cơ sở 2</option>
+            </select>
+            <br />
+            <label for="printers">Máy in</label>
+            <select name="printers" id="printers">
+                <option value="" disabled selected></option>
+                <option value="1">Brother HL-L2321D</option>
+                <option value="2">HP 107w Wifi (4ZB78A)</option>
+                <option value="3" disabled>HP LaserJet MFP 135w Wifi (4ZB83A)</option>
+                <option value="4">Canon PIXMA GM2070 Wifi</option>
+                <option value="5" disabled>Epson EcoTank L3250 Wifi (C11CJ67503)</option>
+            </select>
+            <br />
+            <label for="pages">Chọn trang cần in</label>
+            <input type="text" name="pages" id="pages" placeholder="e.g. 1-5, 8, 11-13"/>
+            <br/>
+            <label for="sides">Số mặt in/1 tờ</label>
+            <select name="sides" id="sides">
+                <option value="" disabled selected></option>
+                <option value="1">1</option>
+                <option value="2">2</option>
             </select>
             <br/>
             <label for="size">Khổ giấy</label>
@@ -31,40 +51,23 @@
                 <option value="a4">A4</option>
                 <option value="a5">A5</option>
             </select>
-            <br/>
-            <label for="direction">Hướng in</label>
-            <select name="direction" id="direction">
-                <option value="" disabled selected></option>
-                <option value="horizontal">Ngang</option>
-                <option value="vertical">Dọc</option>
-            </select>
-            <br/>
-            <label for="pagesperside">Số trang/1 mặt in</label>
-            <select name="pagesperside" id="pagesperside">
-                <option value="" disabled selected></option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="4">4</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-            </select>
-            <br/>
-            <label for="sides">Số mặt in/1 tờ</label>
-            <select name="sides" id="sides">
-                <option value="" disabled selected></option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-            </select>
-            <br/>
+            <br />
             <label for="ratio">Tỷ lệ</label>
             <select name="ratio" id="ratio">
                 <option value="" disabled selected></option>
                 <option value="fit">Vừa trang giấy</option>
                 <option value="full">Toàn bộ</option>
             </select>
+            <br />
+            <label for="direction">Hướng in</label>
+            <select name="direction" id="direction">
+                <option value="" disabled selected></option>
+                <option value="horizontal">Ngang</option>
+                <option value="vertical">Dọc</option>
+            </select>
             <div class="config">
                 <button class="next" onclick="location.href='@Url.Action("Upload", "Home")'">Trở về</button>
-                <button class="next" onclick="location.href='@Url.Action("UploadConfirm", "Home")'">Tiếp theo</button>
+                <button class="next" onclick="location.href='@Url.Action("UploadConfirm", "Home")'">Xác nhận</button>
             </div>
         </div>
 
@@ -87,34 +90,44 @@
 
     .upload-box {
         display: flex;
-        max-width: 1000px;
-        background-color: rgba(255, 255, 255, 0.8);
+        flex-direction: row;
+        gap: 25px;
+        max-width: 1100px;
+     /*   background-color: rgba(255, 255, 255, 0.8); */
         padding: 20px;
         border-radius: 8px;
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Bóng mờ */
+     /*   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Bóng mờ */
         margin-top: 30px;
         margin-bottom: 30px;
     }
 
     .print-preview {
         margin: auto;
-        width: 40%;
-        text-align: center;
+        width: 500px;
+        height: 550px;
+        background-color: rgba(255, 255, 255, 0.8);
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        display: flex;
         border-radius: 8px;
+        justify-content: center;
+        align-items: center;
     }
 
     .preview {
-        width: 350px;
-        height: 300px;
-        background-color: gray;
+        width: 450px;
+        height: 500px;
+        background-color: rgb(30, 30, 30);
         padding: 20px;
-        border-radius: 8px;
         text-align: center;
     }
 
     .print-config {
         margin: auto;
-        width: 60%;
+        width: 500px;
+        height: 550px;
+        background-color: rgba(255, 255, 255, 0.8);
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
     }
 
     .delete {
@@ -146,11 +159,11 @@
     }
 
     label {
-        width: 200px;
+        width: 150px;
         margin-left: 75px;
     }
 
-    select {
+    input, select {
         width: 200px;
         height: 35px;
         border: none;
