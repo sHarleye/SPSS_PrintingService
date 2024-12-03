@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Build.Evaluation;
 using Printing_Service.Models;
 using System.Diagnostics;
 
@@ -92,9 +93,85 @@ namespace Printing_Service.Controllers
             return View();
         }
 
-        public IActionResult StudentHistory()
+        public IActionResult StudentHistory(string sortOrder, string searchString)
         {
-            return View();
+            // Simulate getting values print1-5 from database
+            var print1 = new PrintHistory()
+            {
+                Date = new DateTime(2024, 12, 3, 8, 0, 0),
+                FileName = "SampleFile.pdf",
+                PageA4 = 10,
+                Printer = 5,
+                Color = "Có"
+            };
+
+            var print2 = new PrintHistory()
+            {
+                Date = new DateTime(2024, 11, 30, 8, 0, 0),
+                FileName = "SampleFile.pdf",
+                PageA4 = 10,
+                Printer = 5,
+                Color = "Có"
+            };
+
+            var print3 = new PrintHistory()
+            {
+                Date = new DateTime(2024, 12, 2, 10, 0, 0),
+                FileName = "SampleFile.pdf",
+                PageA4 = 10,
+                Printer = 5,
+                Color = "Có"
+            };
+
+            var print4 = new PrintHistory()
+            {
+                Date = new DateTime(2024, 11, 27, 8, 0, 0),
+                FileName = "SampleFile.pdf",
+                PageA4 = 10,
+                Printer = 5,
+                Color = "Có"
+            };
+
+            var print5 = new PrintHistory()
+            {
+                Date = new DateTime(2024, 11, 30, 7, 0, 0),
+                FileName = "SampleFile.pdf",
+                PageA4 = 10,
+                Printer = 5,
+                Color = "Có"
+            };
+
+            var printL = new List<PrintHistory>();
+            printL.Add(print1);
+            printL.Add(print2); 
+            printL.Add(print3);
+            printL.Add(print4);
+            printL.Add(print5);
+
+            ViewData["DateSortParam"] = sortOrder == "date" ? "dateDesc" : "date";
+            ViewData["CurrentFilter"] = searchString;
+            
+            var print = from s in printL select s;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                if (DateTime.TryParse(searchString, out var dateTime))
+                {
+                    print = print.Where(s => s.Date.ToShortDateString() == dateTime.ToShortDateString());
+                }
+            }
+
+            switch (sortOrder)
+            {
+                case "dateDesc":
+                    print = print.OrderByDescending(s => s.Date);
+                    break;
+                default:
+                    print = print.OrderBy(s => s.Date);
+                    break;
+            }
+
+            return View(print.ToList());
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
