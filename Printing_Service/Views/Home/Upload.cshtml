@@ -3,7 +3,7 @@
     Layout = "~/Views/Shared/_Upload.cshtml";
 }
 
-<div class="d-flex justify-content-center align-items-center imagebehind">
+<div class="mb-5  d-flex justify-content-center align-items-center">
     <div class="upload-box p-4">
         <div class="upload-main">
             <div class="adding-files">
@@ -26,8 +26,8 @@
                 <ul class="file-list"></ul>
             </div>
             <div class="config">
-                <button class="next">Trở về</button>
-                <button class="next" onclick="location.href='@Url.Action("UploadConfirm", "Home")'">Tiếp theo</button>
+                <button class="btn btn-danger" style="margin-right: 50px;">Trở về</button>
+                <button class="btn btn-success" onclick="location.href='@Url.Action("UploadConfirm", "Home")'">Tiếp theo</button>
             </div>
         </div>
 
@@ -36,10 +36,10 @@
 
 <style>
     .imagebehind {
-        background-image: url('/image/white.jpg');
+        background-image: url('/image/slbktv.jpg');
         background-size: cover;
         background-position: center;
-        height: 100vh;
+        height: 90vh;
         width: 100%;
     }
 
@@ -272,8 +272,15 @@
         fileItem.querySelector(".delete").addEventListener("click", function (event) {
             event.stopPropagation();
             fileItem.remove();
+
+            addingFiles.style.display = "block";
+            previewArea.style.display = "none";
+            configSection.style.display = "none";
+
         });
     }
+
+
 
     // Handle files added from input or drag-and-drop
     function handleFiles(files) {

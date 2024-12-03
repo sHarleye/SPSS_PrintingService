@@ -4,18 +4,18 @@
 }
 
 <body>
-    <div class="d-flex justify-content-center align-items-center imagebehind">
-        <div class="account-box">
+    <div class="d-flex justify-content-center align-items-center ">
+        <div class="account-box mt-5 mb-5 ">
             <h1 class="text-center">Chọn máy in</h1>
             <div class="content-box">
-                <hr style="border-top: 3px solid #000;" />
+                <hr class="mb-3" style="border-top: 3px solid #000;" />
                 <div class="container">
                     <!-- Printer 1 -->
                     <div class="printer-card">
                         <img src="~/Image/printer.png" alt="Printer">
                         <h3>Máy in 1</h3>
                         <span class="badge bg-success mb-2">Hoạt động</span>
-                        <div class="button-group" style="margin-top: 10%;">
+                        <div class="button-group" style="margin-top: 3%;">
                             <button class="print" id="1" onclick="location.href='@Url.Action("UploadConfig", "Home")'">Chọn</button>
                         </div>
                     </div>
@@ -24,8 +24,8 @@
                         <img src="~/Image/printer.png" alt="Printer">
                         <h3>Máy in 2</h3>
                         <span class="badge bg-success mb-2">Hoạt động</span>
-                        <div class="button-group" style="margin-top: 10%;">
-                            <button class="print" id="2" onclick="location.href='@Url.Action("UploadConfig", "Home")'">Chọn</button>
+                        <div class="button-group" style="margin-top: 3%;">
+                            <button class="print" id="1" onclick="location.href='@Url.Action("UploadConfig", "Home")'">Chọn</button>
                         </div>
                     </div>
                     <!-- Printer 3 -->
@@ -33,8 +33,8 @@
                         <img src="~/Image/printer.png" alt="Printer">
                         <h3>Máy in 3</h3>
                         <span class="badge bg-success mb-2">Hoạt động</span>
-                        <div class="button-group" style="margin-top: 10%;">
-                            <button class="print" id="3" onclick="location.href='@Url.Action("UploadConfig", "Home")'">Chọn</button>
+                        <div class="button-group" style="margin-top: 3%;">
+                            <button class="print" id="1" onclick="location.href='@Url.Action("UploadConfig", "Home")'">Chọn</button>
                         </div>
                     </div>
                     <!-- Printer 4 -->
@@ -42,8 +42,8 @@
                         <img src="~/Image/printer.png" alt="Printer">
                         <h3>Máy in 4</h3>
                         <span class="badge bg-success mb-2">Hoạt động</span>
-                        <div class="button-group" style="margin-top: 10%;">
-                            <button class="print" id="4" onclick="location.href='@Url.Action("UploadConfig", "Home")'">Chọn</button>
+                        <div class="button-group" style="margin-top: 3%;">
+                            <button class="print" id="1" onclick="location.href='@Url.Action("UploadConfig", "Home")'">Chọn</button>
                         </div>
                     </div>
                     <!-- Printer 5 -->
@@ -51,20 +51,21 @@
                         <img src="~/Image/printer.png" alt="Printer">
                         <h3>Máy in 5</h3>
                         <span class="badge bg-success mb-2">Hoạt động</span>
-                        <div class="button-group" style="margin-top: 10%;">
-                            <button class="print" id="5" onclick="location.href='@Url.Action("UploadConfig", "Home")'">Chọn</button>
+                        <div class="button-group" style="margin-top: 3%;">
+                            <button class="print" id="1" onclick="location.href='@Url.Action("UploadConfig", "Home")'">Chọn</button>
                         </div>
                     </div>
                     <!-- Printer 6 -->
                     <div class="printer-card">
                         <img src="~/Image/printer.png" alt="Printer">
                         <h3>Máy in 6</h3>
-                        <span class="badge bg-danger mb-2">Tạm ngưng hoạt động</span>
-                        <div class="button-group" style="margin-top: 10%;">
-                            <button class="print" id="6" onclick="location.href='@Url.Action("UploadConfig", "Home")'" disabled>Chọn</button>
+                        <span class="badge bg-success mb-2">Hoạt động</span>
+                        <div class="button-group" style="margin-top: 3%;">
+                            <button class="print" id="1" onclick="location.href='@Url.Action("UploadConfig", "Home")'">Chọn</button>
                         </div>
                     </div>
                 </div>
+                <a class="text-decoration-none" asp-action="Upload" asp-controller="Home"><button class="btn btn-danger d-flex align-items-center justify-content-center mt-3 mx-auto mb-">Trở về</button></a>
             </div>
         </div>
     </div>
@@ -72,10 +73,9 @@
 
 <style>
     .imagebehind {
-        background-image: url('/image/white.jpg');
         background-size: cover;
         background-position: center;
-        height: 100vh;
+        height: 110vh;
         width: 100%;
     }
 
@@ -135,7 +135,7 @@
     }
 
         .button-group button {
-            background-color: forestgreen;
+            background-color: coral;
             color: white;
             border: none;
             border-radius: 4px;
@@ -166,10 +166,12 @@
         width: 80%;
         max-width: 1200px;
         background-color: rgba(255, 255, 255, 0.8);
-        padding: 50px;
+        padding: 40px;
         box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
         border: 1px solid black;
         border-radius: 20px;
+
+
     }
 
     .content-box {
@@ -241,14 +243,3 @@
         text-align: center;
     }
 </style>
-
-<script>
-/*    const printButtons = document.querySelectorAll('.print');
-
-    printButtons.forEach(button => {
-        button.addEventListener('click', function () {
-             document.getElementById('progress').style.display = 'flex';
-        });
-    }); */
-
-</script>

@@ -3,33 +3,34 @@
     Layout = "~/Views/Shared/_Upload.cshtml";
 }
 
-<div class="d-flex justify-content-center align-items-center imagebehind">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<div class="d-flex justify-content-center align-items-center">
     <div class="upload-box p-4">
-        <div class="print-preview">
+        <div class="print-preview" style="width: 800px;">
             <iframe src="~/Image/sample.pdf"
                     frameborder="0"
-                    width="100%"
+                    width="130%"
                     height="100%"
                     style="border-radius: 8px;">
             </iframe>
         </div>
-        <div class="print-config">
+        <div class="print-config" style="width: 650px;">
             <br />
             <br />
+            <p style="text-align:center; font-size: 24px; font-weight: bold;"><strong>Thiết lập cấu hình in</strong></p>
             <br />
-            <p style="text-align:center;"><strong>Thiết lập cấu hình in</strong></p>
-            <br />
-            <label style="width: 150px; margin-left: 75px;" for="pages">Chọn trang cần in</label>
-            <input type="text" name="pages" id="pages" placeholder="e.g. 1-5, 8, 11-13"/>
+            <label class="fw-bold" style="width: 150px; margin-left: 75px;" for="pages">Chọn trang cần in</label>
+            <input class="text-center" type="text" name="pages" id="pages" placeholder="e.g. 1-5, 8, 11-13"/>
             <br/>
-            <label style="width: 150px; margin-left: 75px;" for="sides">Số mặt in/1 tờ</label>
+            <label class="fw-bold" style="width: 150px; margin-left: 75px;" for="sides">Số mặt in/1 tờ</label>
             <select name="sides" id="sides">
                 <option value="" disabled selected></option>
                 <option value="1">1</option>
                 <option value="2">2</option>
             </select>
             <br/>
-            <label style="width: 150px; margin-left: 75px;" for="size">Khổ giấy</label>
+            <label class="fw-bold" style="width: 150px; margin-left: 75px;" for="size">Khổ giấy</label>
             <select name="size" id="size">
                 <option value="" disabled selected></option>
                 <option value="a3">A3</option>
@@ -37,22 +38,22 @@
                 <option value="a5">A5</option>
             </select>
             <br />
-            <label style="width: 150px; margin-left: 75px;" for="ratio">Tỷ lệ</label>
+            <label class="fw-bold" style="width: 150px; margin-left: 75px;" for="ratio">Tỷ lệ</label>
             <select name="ratio" id="ratio">
                 <option value="" disabled selected></option>
                 <option value="fit">Vừa trang giấy</option>
                 <option value="full">Toàn bộ</option>
             </select>
             <br />
-            <label style="width: 150px; margin-left: 75px;" for="direction">Hướng in</label>
+            <label class="fw-bold" style="width: 150px; margin-left: 75px;" for="direction">Hướng in</label>
             <select name="direction" id="direction">
                 <option value="" disabled selected></option>
                 <option value="horizontal">Ngang</option>
                 <option value="vertical">Dọc</option>
             </select>
             <div class="config">
-                <button class="next" onclick="location.href='@Url.Action("UploadConfirm", "Home")'">Trở về</button>
-                <button class="next" id="start" onclick="">Xác nhận</button>
+                <button class="next btn btn-danger"  onclick="location.href='@Url.Action("UploadConfirm", "Home")'">Trở về</button>
+                <button class="next btn btn-success"  id="start" onclick="">Xác nhận</button>
             </div>
         </div>
 
@@ -60,25 +61,34 @@
 </div>
 
 <div class="overlay">
-    <div class="print-info p-4">
+    <div class="print-info p-4" >
         <div class="print-confirm">
             <h2 style="text-decoration: underline;text-decoration-color:gray;text-underline-offset: 20px;text-align:center;">Thông báo trạng thái</h2>
             <br />
             <br />
-            <label style="width: 200px;margin-bottom:25px;">Tài liệu</label>
+            <label class="fw-bold" style="width: 200px;margin-bottom:25px;">Tài liệu</label>
             <label style="width: 200px;text-align:center;margin-bottom:25px;" class="info">sample.pdf</label>
             <br />
-            <label style="width: 200px;margin-bottom:25px;">Số trang có sẵn</label>
-            <label style="width: 200px;text-align:center;margin-bottom:25px;" class="info">11 (A4)</label>
+            <label class="fw-bold"  style="width: 200px;margin-bottom:25px;">Số trang cần để in</label>
+            <label style="width: 200px;text-align:center;margin-bottom:25px;" class="info">11</label>
             <br />
-            <label style="width: 200px;margin-bottom:25px;">Số trang cần để in</label>
-            <label style="width: 200px;text-align:center;margin-bottom:25px;" class="info">11 (A4)</label>
+            <label class="fw-bold" style="width: 200px;margin-bottom:25px;">Số mặt in</label>
+            <label style="width: 200px;text-align:center;margin-bottom:25px;" class="info">2</label>
             <br />
-            <label style="width: 200px;margin-bottom:25px;">Máy in</label>
+            <label class="fw-bold" style="width: 200px;margin-bottom:25px;">Khổ giấy</label>
+            <label style="width: 200px;text-align:center;margin-bottom:25px;" class="info">A4</label>
+            <br />
+            <label class="fw-bold" style="width: 200px;margin-bottom:25px;">Tỷ lệ</label>
+            <label style="width: 200px;text-align:center;margin-bottom:25px;" class="info">Vừa trang giấy</label>
+            <br />
+            <label class="fw-bold" style="width: 200px;margin-bottom:25px;">Hướng in</label>
+            <label style="width: 200px;text-align:center;margin-bottom:25px;" class="info">Dọc</label>
+            <br />
+            <label class="fw-bold" style="width: 200px;margin-bottom:25px;">Máy in</label>
             <label style="width: 200px;text-align:center;margin-bottom:25px;" class="info">Máy in 1</label>
-            <div class="config">
-                <button class="next" id="back">Trở về</button>
-                <button class="next" id="print">In</button>
+            <div class="config mt-3">
+                <button class="btn btn-danger" style="margin-right: 20%;" id="back">Trở về</button>
+                <button class="btn btn-success " id="print">In</button>
             </div>
         </div>
     </div>
@@ -86,13 +96,13 @@
 
 <div class="overlay2" id="progress">
     <div class="print-progress">
-        <h2 style="text-decoration: underline;text-decoration-color:gray;text-underline-offset: 20px;text-align:center;">Trạng thái in</h2>
+        <h2 class="text-center" style="text-decoration: underline; text-decoration-color: gray; text-underline-offset: 20px;">Trạng thái in</h2>
         <br />
         <br />
-        <label class="prog" style="width: 200px;text-align:center;margin-bottom:25px;">Tài liệu</label>
-        <label class="prog" style="width: 200px;text-align:center;margin-bottom:25px;">sample.pdf</label>
+        <label class="prog text-center" style="width: 200px; margin-bottom: 25px;">Tài liệu</label>
+        <label class="prog text-center" style="width: 200px; margin-bottom: 25px;">sample.pdf</label>
         <br />
-        <p style="text-align:center;color:mediumseagreen;font-weight:bold;">• In thành công</p>
+        <p class="text-center" style="color: mediumseagreen; font-weight: bold;">• In thành công</p>
         <br />
         <div class="config">
             <button class="next" onclick="location.href='@Url.Action("MainPage", "Home")'">Thoát</button>
@@ -102,10 +112,9 @@
 
 <style>
     .imagebehind {
-        background-image: url('/image/white.jpg');
         background-size: cover;
         background-position: center;
-        height: 100vh;
+        height: 90vh;
         width: 100%;
     }
 
@@ -173,7 +182,6 @@
     .next {
         width: 100px;
         height: 35px;
-        background-color: deepskyblue;
         border: none;
         cursor: pointer;
         border-radius: 5px;
@@ -183,7 +191,7 @@
 
     .print-progress {
         max-width: 500px;
-        background-color: lightskyblue;
+        background-color: lightgoldenrodyellow;
         padding: 20px;
         border-radius: 8px;
         box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
@@ -195,9 +203,10 @@
         width: 200px;
         height: 35px;
         border: none;
-        background-color: skyblue;
+        background-color: lightskyblue;
         border-radius: 5px;
         margin-bottom: 45px;
+        color: black;
     }
 
     .overlay, .overlay2 {
@@ -227,7 +236,11 @@
     }
 </style>
 
+
+
 <script>
+
+
     document.getElementById('start').addEventListener('click', function () {
         document.querySelector('.overlay').style.display = 'flex';
     });
@@ -237,7 +250,8 @@
     });
 
     document.getElementById('print').addEventListener('click', function () {
-        document.querySelector('.overlay').style.display = 'none';
         document.querySelector('.overlay2').style.display = 'flex';
     });
 </script>
+
+

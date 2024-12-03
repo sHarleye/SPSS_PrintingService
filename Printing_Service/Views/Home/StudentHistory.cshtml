@@ -1,158 +1,176 @@
-﻿@using Printing_Service.Models;
-@model List<PrintHistory>;
-@{
-    ViewData["Title"] = "StudentHistory";
-    Layout = "~/Views/Shared/_MainPage.cshtml";
-}
+﻿
+    @using Printing_Service.Models;
+    @model List<PrintHistory>;
+    @{
+        ViewData["Title"] = "StudentHistory";
+        Layout = "~/Views/Shared/_MainPage.cshtml";
+    }
 
-<div class="d-flex justify-content-center align-items-center imagebehind">
-    <div class="account-box">
-        <h1 class="text-center">Lịch sử in</h1>
-        <div class="content-box">
-            <p class="text-center">Thông tin lịch sử in</p>
-            <hr style="border-top: 3px solid #000;" />
+    <div class="d-flex justify-content-center align-items-center imagebehind">
+        <div class="account-box">
+            <h1 class="text-center">Lịch sử in</h1>
+            <div class="content-box">
+                <p class="text-center">Thông tin lịch sử in</p>
+                <hr style="border-top: 3px solid #000;" />
 
-            <form asp-action="StudentHistory" method="get">
-                <div class="form-action no-color">
-                    <p>
-                        <div class="col-md-5 form-group mb-4">
-                            Tìm theo ngày:<input class="form-control input-sm" type="date" name="searchString" value="@ViewData["CurrentFilter"]" />
-                            <br />
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <input type="submit" value="Tìm kiếm" class="btn btn-success" />
-                                </div>
-                                <div class="col-md-9">
-                                <a class="btn btn-primary mx-2" asp-controller="Home" asp-action="StudentHistory"
-                                    asp-route-sortOrder="@ViewData["DateSortParam"]">
-                                    <i class="bi bi-pencil-square"></i>
-                                    Thay đổi sắp xếp ngày in
+                <form class="mb-4" asp-action="StudentHistory" method="get">
+                    <div class="form-action no-color">
+                        <div class="row align-items-center">
+                      
+                            <div class="col-auto">
+                                <label for="searchString" class="form-label">Tìm theo ngày</label>
+                                <input style="width: 300%;" id="searchString" class="form-control input-sm" type="date" name="searchString" value="@ViewData["CurrentFilter"]" />
+                            </div>
+
+                            <div class="col-auto" style="margin-left: 30%; margin-top:3%;">
+                                <input type="submit" value="Tìm kiếm" class="btn btn-success fw-bold" />
+                            </div>
+
+                            <div class="col-auto" style="margin-top: 3%;">
+                                <a class="btn btn-primary fw-bold" asp-controller="Home" asp-action="StudentHistory" asp-route-sortOrder="@ViewData["DateSortParam"]">
+                                    In report 
                                 </a>
-                                </div>
+                            </div>
+
+                      
+                            <div class="col-auto" style="margin-top: 3%;">
+                                <a class="btn btn-warning fw-bold" asp-controller="Home" asp-action="StudentHistory" asp-route-sortOrder="@ViewData["DateSortParam"]">                              
+                                    Thay đổi thứ tự ngày in <i class="fa-solid fa-sort"></i>
+                                </a>
+                            </div>
+
+                           
+                            <div class="col-auto" style="margin-top: 3%;">
+                                <a class="btn btn-danger fw-bold" asp-action="StudentHistory">Trở về</a>
                             </div>
                         </div>
-                        <a asp-action="StudentHistory"> Trở về lịch sử đầy đủ</a>
-                    </p>
-                </div>
-            </form>
+                    </div>
+                </form>
 
-            <div class="col-12 ">
-                <div class="table-responsive" style="max-width: 100%;">
-                    <table class="table table-bordered table-hover table-striped">
-                        <thead class="table" style="background-color: #121C57; color: whitesmoke;">
-                            <tr class="text-center">
-                                <th class="col1"> Ngày in</th>
-                                <th class="col2">Tên tài liệu</th>
-                                <th class="col3">Trang (A4)</th>
-                                <th class="col4">Máy in</th>
-                                <th class="col5">In màu</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in @Model)
-                            {
-                                <tr>
-                                    <td>@Html.DisplayFor(modelItem => item.Date)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.FileName)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.PageA4)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.Printer)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.Color)</td>
+
+                <div class="col-12 ">
+                    <div class="table-responsive" style="max-width: 100%;">
+                        <table class="table table-bordered table-hover table-striped">
+                            <thead class="table" style="background-color: #121C57; color: whitesmoke;">
+                                <tr class="text-center">
+                                    <th class="col1 text-center">Ngày in</th>
+                                <th class="col2 text-center" style="width: 20%;">Tên tài liệu</th>
+                                <th class="col3 text-center">Khổ in</th>
+                                <th class="col4 text-center">Máy in</th>
+                                <th class="col5 text-center">Số mặt in</th>
+                                <th class="col6 text-center">Tỉ lệ</th>
+                                <th class="col7 text-center">Hướng in</th>
                                 </tr>
-                            }
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in @Model)
+                                {
+                                <tr class="text-center">
+                                        <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.FileName)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.PageA4)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Printer)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Side)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Scale)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Orientation)</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<style>
-    .account-box {
-        width: 90%;
-        max-width: 1200px;
-        background-color: rgba(255, 255, 255, 0.9);
-        padding: 40px;
-        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-        border: 1px solid black;
-        border-radius: 15px;
-    }
-
-    .content-box {
-        background-color: white;
-        padding: 20px;
-        border-radius: 10px;
-    }
-
-    .imagebehind {
-        background-image: url('/image/slbktv.jpg');
-        background-size: cover;
-        background-position: center;
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .form-control {
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-    }
-
-    .buttons .btn {
-        min-width: 150px;
-    }
-
-    .qr-code-container {
-        position: relative;
-        display: inline-block;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-        .qr-code-container:hover {
-            transform: scale(1.05);
-            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+    <style>
+        .account-box {
+            width: 90%;
+            max-width: 1200px;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            border: 1px solid black;
+            border-radius: 15px;
         }
 
-        .qr-code-container label {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: rgba(255, 255, 255, 0.7);
-            padding: 5px;
+        .content-box {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .imagebehind {
+            background-image: url('/image/slbktv.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .form-control {
+            padding: 10px;
+            border: 1px solid #ccc;
             border-radius: 5px;
         }
 
-    .card {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-        .card:hover {
-            transform: scale(1.05);
-            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+        .buttons .btn {
+            min-width: 150px;
         }
 
-    .h1 {
-        text-align: center;
-    }
-
-    .account-box {
-        animation: fadeIn 1s ease-in-out;
-    }
-
-    .btn-secondary {
-        background-color: #6c757d;
-        border-color: #6c757d;
-    }
-
-    .btn-success {
-        background-color: #28a745;
-        border-color: #28a745;
-    }
-
-        .btn-secondary:hover, .btn-success:hover {
-            opacity: 0.8;
+        .qr-code-container {
+            position: relative;
+            display: inline-block;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
+
+            .qr-code-container:hover {
+                transform: scale(1.05);
+                box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+            }
+
+            .qr-code-container label {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: rgba(255, 255, 255, 0.7);
+                padding: 5px;
+                border-radius: 5px;
+            }
+
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+            .card:hover {
+                transform: scale(1.05);
+                box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+            }
+
+        .h1 {
+            text-align: center;
+        }
+
+        .account-box {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            border-color: #6c757d;
+        }
+
+        .btn-success {
+            background-color: #28a745;
+            border-color: #28a745;
+        }
+
+            .btn-secondary:hover, .btn-success:hover {
+                opacity: 0.8;
+            }
+
+    </style>
 </style>

@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Build.Evaluation;
 using Printing_Service.Models;
 using System.Diagnostics;
@@ -100,45 +100,56 @@ namespace Printing_Service.Controllers
             {
                 Date = new DateTime(2024, 12, 3, 8, 0, 0),
                 FileName = "SampleFile.pdf",
-                PageA4 = 10,
-                Printer = 5,
-                Color = "C�"
+                PageA4 = "A4",
+                Printer = 1,
+                Side = "2 mặt",
+                Scale = "Toàn bộ",
+                Orientation = "Dọc"
+
             };
 
             var print2 = new PrintHistory()
             {
                 Date = new DateTime(2024, 11, 30, 8, 0, 0),
                 FileName = "SampleFile.pdf",
-                PageA4 = 10,
-                Printer = 5,
-                Color = "C�"
+                PageA4 = "A4",
+                Printer = 1,
+                Side = "2 mặt",
+                Scale = "Toàn bộ",
+                Orientation = "Dọc"
             };
 
             var print3 = new PrintHistory()
             {
                 Date = new DateTime(2024, 12, 2, 10, 0, 0),
                 FileName = "SampleFile.pdf",
-                PageA4 = 10,
-                Printer = 5,
-                Color = "C�"
+                PageA4 = "A4",
+                Printer = 1,
+                Side = "2 mặt",
+                Scale = "Toàn bộ",
+                Orientation = "Dọc"
             };
 
             var print4 = new PrintHistory()
             {
                 Date = new DateTime(2024, 11, 27, 8, 0, 0),
                 FileName = "SampleFile.pdf",
-                PageA4 = 10,
-                Printer = 5,
-                Color = "C�"
+                PageA4 = "A4",
+                Printer = 1,
+                Side = "2 mặt",
+                Scale = "Toàn bộ",
+                Orientation = "Dọc"
             };
 
             var print5 = new PrintHistory()
             {
                 Date = new DateTime(2024, 11, 30, 7, 0, 0),
                 FileName = "SampleFile.pdf",
-                PageA4 = 10,
-                Printer = 5,
-                Color = "C�"
+                PageA4 = "A4",
+                Printer = 1,
+                Side = "2 mặt",
+                Scale = "Toàn bộ",
+                Orientation = "Dọc"
             };
 
             var printL = new List<PrintHistory>();

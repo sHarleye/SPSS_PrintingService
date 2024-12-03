@@ -5,18 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Printing_Service</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
     <link rel="stylesheet" href="~/Printing_Service.styles.css" asp-append-version="true" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightslider/1.1.6/css/lightslider.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
 
+
+
+
+
+
     <style>
+
+
 
         #adaptive img {
             width: 100%;
@@ -50,7 +60,7 @@
 
         .footer-widget-holder {
             display: flex;
-            background-color: ##121C57;
+            background-color: #121C57;
             color: white;
             justify-content: space-around;
         }
@@ -73,6 +83,11 @@
 
         .hello:hover {
             font-weight: bold;
+        }
+
+        .indam:hover {
+            color: orange !important;
+            font-weight: bold !important;
         }
 
     </style>
@@ -101,10 +116,10 @@
                             <a class="nav-link text-dark hello" asp-area="" asp-controller="Home" asp-action="Upload">In Tài Liệu</a>
                         </li>
                         <li class="nav-item me-4">
-                            <a class="nav-link text-dark hello" asp-area="" asp-controller="" asp-action="">Lịch sử in</a>
+                            <a class="nav-link text-dark hello" asp-area="" asp-controller="Home" asp-action="StudentHistory">Lịch sử in</a>
                         </li>
                         <li class="nav-item me-4">
-                            <a class="nav-link text-dark hello" asp-area="" asp-controller="" asp-action="">Mua Trang in</a>
+                            <a class="nav-link text-dark hello" asp-area="" asp-controller="Home" asp-action="BuyPaper">Mua Trang in</a>
                         </li>
                         <li class="nav-item me-4">
                             <a class="nav-link text-dark hello" asp-area="" asp-controller="" asp-action="">Hỗ trợ</a>
@@ -128,15 +143,22 @@
                                         border: 2px solid black;
                                         border-radius: 50%;
                                         padding: 5px;
+                                        transition: background-color 0.3s, color 0.3s;
                                     }
+
+                                        .fa-user:hover {
+                                            background-color: black;
+                                            color: white;
+                                        }
                                 </style>
                             </a>
+
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
                                 <li><a class="dropdown-item hello" asp-area="" asp-controller="Login" asp-action="Login">Log In</a></li>
-                                <li><a class="dropdown-item hello" asp-area="" asp-controller="Home" asp-action="Privacy">Sign Up</a></li>
-                                <li><a class="dropdown-item hello" href="#">Settings</a></li>
+                                <li><a class="dropdown-item hello" asp-area="" asp-controller="Login" asp-action="Register">Sign Up</a></li>
+                                <li><a class="dropdown-item hello" asp-area="" asp-controller="Home" asp-action="Profile">Profile</a></li>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a asp-controller="Home" asp-action="Index" class="dropdown-item mb-2 hello">Log Out</a></li>
+                                <li><a asp-controller="Home" asp-action="Index" class="dropdown-item mb-2 hello">Log Out<i class="fa-solid fa-right-from-bracket ms-2"></i></a></li>
                             </ul>
 
                         </li>
@@ -150,6 +172,7 @@
 
 
     @RenderBody()
+
 
 
     <section class="d-flex justify-content-between align-items-center p-5" style="background-color: #121C57; color: white; font-family: 'Quicksand', sans-serif;">
@@ -221,6 +244,15 @@
     <script>
 
         $(document).ready(function () {
+            $('#adaptive').lightSlider({
+                adaptiveHeight: true,
+                item: 1,
+                slideMargin: 0,
+                loop: true,
+                auto: true,
+                pause: 5000 // 5 seconds
+            });
+
             $('.main-menu .mobile-menu').hide();
 
             $('.toggler').click(function () {
@@ -229,6 +261,11 @@
             });
         });
     </script>
+
+
+
+
+
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>

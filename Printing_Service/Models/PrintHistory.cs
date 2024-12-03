@@ -6,10 +6,14 @@
         
         public string FileName { get; set; }
 
-        public int PageA4 { get; set; }
+        public string PageA4 { get; set; }
 
         public int Printer { get; set; }
 
-        public string Color { get; set; }
+        public string Side { get; set; }
+
+        public string Scale{ get; set; }
+
+        public string Orientation { get; set; }
     }
 }
