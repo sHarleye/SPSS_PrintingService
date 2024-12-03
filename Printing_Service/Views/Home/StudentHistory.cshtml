@@ -15,8 +15,22 @@
             <form asp-action="StudentHistory" method="get">
                 <div class="form-action no-color">
                     <p>
-                        Tìm theo ngày:<input type="text" name="searchString" value="@ViewData["CurrentFilter"]"/>
-                        <input type="submit" value="Search" class="btn btn-success"/>
+                        <div class="col-md-5 form-group mb-4">
+                            Tìm theo ngày:<input class="form-control input-sm" type="date" name="searchString" value="@ViewData["CurrentFilter"]" />
+                            <br />
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <input type="submit" value="Tìm kiếm" class="btn btn-success" />
+                                </div>
+                                <div class="col-md-9">
+                                <a class="btn btn-primary mx-2" asp-controller="Home" asp-action="StudentHistory"
+                                    asp-route-sortOrder="@ViewData["DateSortParam"]">
+                                    <i class="bi bi-pencil-square"></i>
+                                    Thay đổi sắp xếp ngày in
+                                </a>
+                                </div>
+                            </div>
+                        </div>
                         <a asp-action="StudentHistory"> Trở về lịch sử đầy đủ</a>
                     </p>
                 </div>
@@ -27,9 +41,7 @@
                     <table class="table table-bordered table-hover table-striped">
                         <thead class="table" style="background-color: #121C57; color: whitesmoke;">
                             <tr class="text-center">
-                                <th class="col1">
-                                <a asp-action="StudentHistory" asp-route-sortOrder="@ViewData["DateSortParam"]">Ngày in</a>   
-                                </th>
+                                <th class="col1"> Ngày in</th>
                                 <th class="col2">Tên tài liệu</th>
                                 <th class="col3">Trang (A4)</th>
                                 <th class="col4">Máy in</th>
