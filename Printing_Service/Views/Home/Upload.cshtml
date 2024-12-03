@@ -23,27 +23,11 @@
         </div>
         <div class="upload-progress">
             <div class="list-of-files">
-                <ul class="file-list">
-                    <!--    <li class="file-item">
-                            <div class="file-extension">
-                                <img src="https://www.flaticon.com/free-icons/pdf" width="30">
-                            </div>
-                            <div class="file-details">
-                                <b>my_cv.pdf</b>
-                                <br />
-                                <span style="color:gray;">60 kB of 120 kB</span>
-                                <span>•</span>
-                                <i class="fa fa-check-circle-o"></i>
-                                <span>Hoàn tất</span>
-                            </div>
-                            <button class="delete"><i class="fa-regular fa-circle-xmark"></i></button>
-                        </li>
-                    -->
-                </ul>
+                <ul class="file-list"></ul>
             </div>
             <div class="config">
                 <button class="next">Trở về</button>
-                <button class="next" onclick="location.href='@Url.Action("UploadConfig", "Home")'">Tiếp theo</button>
+                <button class="next" onclick="location.href='@Url.Action("UploadConfirm", "Home")'">Tiếp theo</button>
             </div>
         </div>
 
@@ -68,7 +52,7 @@
         /*    background-color: rgba(255, 255, 255, 0.8); */
         padding: 20px;
         border-radius: 8px;
-        /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Bóng mờ */
+        /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); Shadow */
         margin-top: 30px;
         margin-bottom: 30px;
     }
@@ -81,7 +65,7 @@
         background-color: rgba(255, 255, 255, 0.8);
         padding: 20px;
         border-radius: 8px;
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Bóng mờ */
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
         margin-top: 30px;
         margin-bottom: 30px;
         display: flex;

@@ -19,17 +19,17 @@
             <br />
             <p style="text-align:center;"><strong>Thiết lập cấu hình in</strong></p>
             <br />
-            <label for="pages">Chọn trang cần in</label>
+            <label style="width: 150px; margin-left: 75px;" for="pages">Chọn trang cần in</label>
             <input type="text" name="pages" id="pages" placeholder="e.g. 1-5, 8, 11-13"/>
             <br/>
-            <label for="sides">Số mặt in/1 tờ</label>
+            <label style="width: 150px; margin-left: 75px;" for="sides">Số mặt in/1 tờ</label>
             <select name="sides" id="sides">
                 <option value="" disabled selected></option>
                 <option value="1">1</option>
                 <option value="2">2</option>
             </select>
             <br/>
-            <label for="size">Khổ giấy</label>
+            <label style="width: 150px; margin-left: 75px;" for="size">Khổ giấy</label>
             <select name="size" id="size">
                 <option value="" disabled selected></option>
                 <option value="a3">A3</option>
@@ -37,25 +37,66 @@
                 <option value="a5">A5</option>
             </select>
             <br />
-            <label for="ratio">Tỷ lệ</label>
+            <label style="width: 150px; margin-left: 75px;" for="ratio">Tỷ lệ</label>
             <select name="ratio" id="ratio">
                 <option value="" disabled selected></option>
                 <option value="fit">Vừa trang giấy</option>
                 <option value="full">Toàn bộ</option>
             </select>
             <br />
-            <label for="direction">Hướng in</label>
+            <label style="width: 150px; margin-left: 75px;" for="direction">Hướng in</label>
             <select name="direction" id="direction">
                 <option value="" disabled selected></option>
                 <option value="horizontal">Ngang</option>
                 <option value="vertical">Dọc</option>
             </select>
             <div class="config">
-                <button class="next" onclick="location.href='@Url.Action("Upload", "Home")'">Trở về</button>
-                <button class="next" onclick="location.href='@Url.Action("UploadConfirm", "Home")'">Xác nhận</button>
+                <button class="next" onclick="location.href='@Url.Action("UploadConfirm", "Home")'">Trở về</button>
+                <button class="next" id="start" onclick="">Xác nhận</button>
             </div>
         </div>
 
+    </div>
+</div>
+
+<div class="overlay">
+    <div class="print-info p-4">
+        <div class="print-confirm">
+            <h2 style="text-decoration: underline;text-decoration-color:gray;text-underline-offset: 20px;text-align:center;">Thông báo trạng thái</h2>
+            <br />
+            <br />
+            <label style="width: 200px;margin-bottom:25px;">Tài liệu</label>
+            <label style="width: 200px;text-align:center;margin-bottom:25px;" class="info">sample.pdf</label>
+            <br />
+            <label style="width: 200px;margin-bottom:25px;">Số trang có sẵn</label>
+            <label style="width: 200px;text-align:center;margin-bottom:25px;" class="info">11 (A4)</label>
+            <br />
+            <label style="width: 200px;margin-bottom:25px;">Số trang cần để in</label>
+            <label style="width: 200px;text-align:center;margin-bottom:25px;" class="info">11 (A4)</label>
+            <br />
+            <label style="width: 200px;margin-bottom:25px;">Máy in</label>
+            <label style="width: 200px;text-align:center;margin-bottom:25px;" class="info">Máy in 1</label>
+            <div class="config">
+                <button class="next" id="back">Trở về</button>
+                <button class="next" id="print">In</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="overlay2" id="progress">
+    <div class="print-progress">
+        <h2 style="text-decoration: underline;text-decoration-color:gray;text-underline-offset: 20px;text-align:center;">Trạng thái in</h2>
+        <br />
+        <br />
+        <label class="prog" style="width: 200px;text-align:center;margin-bottom:25px;">Tài liệu</label>
+        <label class="prog" style="width: 200px;text-align:center;margin-bottom:25px;">sample.pdf</label>
+        <br />
+        <p style="text-align:center;color:mediumseagreen;font-weight:bold;">• In thành công</p>
+        <br />
+        <div class="config">
+            <button class="next" onclick="location.href='@Url.Action("MainPage", "Home")'">Thoát</button>
+        </div>
     </div>
 </div>
 
@@ -140,9 +181,14 @@
         margin-right: 50px;
     }
 
-    label {
-        width: 150px;
-        margin-left: 75px;
+    .print-progress {
+        max-width: 500px;
+        background-color: lightskyblue;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        margin-top: 30px;
+        margin-bottom: 30px;
     }
 
     input, select {
@@ -153,4 +199,45 @@
         border-radius: 5px;
         margin-bottom: 45px;
     }
+
+    .overlay, .overlay2 {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.2);
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
+
+    .print-info {
+        display: flex;
+        width: 1000px;
+        background-color: rgb(255, 255, 255);
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Bóng mờ */
+        margin-top: 30px;
+        margin-bottom: 30px;
+        align-items: center;
+        justify-content: center;
+    }
 </style>
+
+<script>
+    document.getElementById('start').addEventListener('click', function () {
+        document.querySelector('.overlay').style.display = 'flex';
+    });
+
+    document.getElementById('back').addEventListener('click', function () {
+        document.querySelector('.overlay').style.display = 'none';
+    });
+
+    document.getElementById('print').addEventListener('click', function () {
+        document.querySelector('.overlay').style.display = 'none';
+        document.querySelector('.overlay2').style.display = 'flex';
+    });
+</script>
